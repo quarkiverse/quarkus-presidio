@@ -1,0 +1,5 @@
+name: quarkus-presidio
+title: Presidio
+version: dev
+nav:
+  - modules/ROOT/nav.adoc
