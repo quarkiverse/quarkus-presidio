@@ -16,6 +16,10 @@
             <artifactId>quarkus-arc-deployment</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-devservices-deployment</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.quarkiverse.presidio</groupId>
             <artifactId>quarkus-presidio</artifactId>
             <version>${project.version}</version>
