@@ -1,5 +1,12 @@
 package io.quarkiverse.presidio.it;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.junit.jupiter.api.Test;
+
 import io.quarkiverse.presidio.runtime.Analyzer;
 import io.quarkiverse.presidio.runtime.Anonymizer;
 import io.quarkiverse.presidio.runtime.model.AnalyzeRequest;
@@ -8,13 +15,7 @@ import io.quarkiverse.presidio.runtime.model.AnonymizeRequestAnonymizersValue;
 import io.quarkiverse.presidio.runtime.model.AnonymizeResponse;
 import io.quarkiverse.presidio.runtime.model.RecognizerResult;
 import io.quarkiverse.presidio.runtime.model.RecognizerResultWithAnaysisExplanation;
-import java.util.List;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-import org.junit.jupiter.api.Test;
-
 import io.quarkus.test.junit.QuarkusTest;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @QuarkusTest
 public class PresidioResourceTest {
@@ -31,7 +32,8 @@ public class PresidioResourceTest {
         analyzeRequest.text("John Smith drivers license is AC432223");
         analyzeRequest.language("en");
 
-        List<RecognizerResultWithAnaysisExplanation> recognizerResultWithAnaysisExplanations = analyzer.analyzePost(analyzeRequest);
+        List<RecognizerResultWithAnaysisExplanation> recognizerResultWithAnaysisExplanations = analyzer
+                .analyzePost(analyzeRequest);
 
         assertThat(recognizerResultWithAnaysisExplanations).hasSize(2);
 
@@ -42,7 +44,8 @@ public class PresidioResourceTest {
 
         int lastElementPosition = recognizerResultWithAnaysisExplanations.size() - 1;
 
-        final RecognizerResultWithAnaysisExplanation driverLicenseEntity = recognizerResultWithAnaysisExplanations.get(lastElementPosition);
+        final RecognizerResultWithAnaysisExplanation driverLicenseEntity = recognizerResultWithAnaysisExplanations
+                .get(lastElementPosition);
         assertThat(driverLicenseEntity.getEntityType()).isEqualTo("US_DRIVER_LICENSE");
         assertThat(driverLicenseEntity.getStart()).isEqualTo(30);
         assertThat(driverLicenseEntity.getEnd()).isEqualTo(38);
@@ -77,22 +80,22 @@ public class PresidioResourceTest {
         anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
 
         recognizerResults
-            .stream()
-            .map(r -> {
-                RecognizerResult recognizerResult = new RecognizerResult();
-                recognizerResult.setEnd(r.getEnd());
-                recognizerResult.setEntityType(r.getEntityType());
-                recognizerResult.setStart(r.getStart());
-                recognizerResult.setScore(r.getScore());
+                .stream()
+                .map(r -> {
+                    RecognizerResult recognizerResult = new RecognizerResult();
+                    recognizerResult.setEnd(r.getEnd());
+                    recognizerResult.setEntityType(r.getEntityType());
+                    recognizerResult.setStart(r.getStart());
+                    recognizerResult.setScore(r.getScore());
 
-                return recognizerResult;
-            })
-            .forEach(anonymizeRequest::addAnalyzerResultsItem);
+                    return recognizerResult;
+                })
+                .forEach(anonymizeRequest::addAnalyzerResultsItem);
 
         AnonymizeResponse anonymizeResponse = anonymizer.anonymizePost(anonymizeRequest);
 
         assertThat(anonymizeResponse.getText())
-            .isEqualTo("hello world, my name is ANONYMIZED. My number is: 03445****");
+                .isEqualTo("hello world, my name is ANONYMIZED. My number is: 03445****");
         assertThat(anonymizeResponse.getItems()).hasSize(2);
 
     }
