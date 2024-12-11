@@ -17,11 +17,11 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest-client-jackson-deployment</artifactId>
+            <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-health-deployment</artifactId>
+            <artifactId>quarkus-smallrye-health</artifactId>
         </dependency>
     </dependencies>
 
