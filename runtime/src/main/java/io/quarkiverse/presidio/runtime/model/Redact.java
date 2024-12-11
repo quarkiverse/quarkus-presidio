@@ -1,24 +1,26 @@
 package io.quarkiverse.presidio.runtime.model;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace with an empty string
+ * Replace with an empty string
  **/
-public class Redact  {
+public class Redact {
 
     /**
-      * Replace with an empty string
+     * Replace with an empty string
      **/
     private String type;
 
     /**
-    * redact
-    * @return type
-    **/
+     * redact
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -45,7 +47,7 @@ public class Redact  {
         sb.append("class Redact {\n");
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -63,20 +65,21 @@ public class Redact  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace with an empty string
+     * Replace with an empty string
      **/
-    public static class RedactQueryParam  {
+    public static class RedactQueryParam {
 
         /**
-          * Replace with an empty string
+         * Replace with an empty string
          **/
         @QueryParam("type")
         private String type;
 
         /**
-        * redact
-        * @return type
-        **/
+         * redact
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;

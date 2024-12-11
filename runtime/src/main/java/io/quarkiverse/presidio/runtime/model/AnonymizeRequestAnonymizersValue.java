@@ -1,9 +1,11 @@
 package io.quarkiverse.presidio.runtime.model;
-import com.fasterxml.jackson.annotation.*;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.*;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonymizeRequestAnonymizersValue  {
+public class AnonymizeRequestAnonymizersValue {
 
     private String type;
     private String newValue;
@@ -12,14 +14,16 @@ public class AnonymizeRequestAnonymizersValue  {
     private Boolean fromEnd = false;
 
     public enum HashTypeEnum {
-        MD5(String.valueOf("md5")), SHA256(String.valueOf("sha256")), SHA512(String.valueOf("sha512"));
+        MD5(String.valueOf("md5")),
+        SHA256(String.valueOf("sha256")),
+        SHA512(String.valueOf("sha512"));
 
         // caching enum access
         private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
 
         String value;
 
-        HashTypeEnum (String v) {
+        HashTypeEnum(String v) {
             value = v;
         }
 
@@ -43,13 +47,15 @@ public class AnonymizeRequestAnonymizersValue  {
             throw new IllegalArgumentException("Unexpected value '" + v + "'");
         }
     }
+
     private HashTypeEnum hashType = HashTypeEnum.MD5;
     private String key;
 
     /**
-    * encrypt
-    * @return type
-    **/
+     * encrypt
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -68,9 +74,10 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * The string to replace with
-    * @return newValue
-    **/
+     * The string to replace with
+     *
+     * @return newValue
+     **/
     @JsonProperty("new_value")
     public String getNewValue() {
         return newValue;
@@ -89,9 +96,10 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * The replacement character
-    * @return maskingChar
-    **/
+     * The replacement character
+     *
+     * @return maskingChar
+     **/
     @JsonProperty("masking_char")
     public String getMaskingChar() {
         return maskingChar;
@@ -110,9 +118,10 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * The amount of characters that should be replaced
-    * @return charsToMask
-    **/
+     * The amount of characters that should be replaced
+     *
+     * @return charsToMask
+     **/
     @JsonProperty("chars_to_mask")
     public Integer getCharsToMask() {
         return charsToMask;
@@ -131,11 +140,12 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * Whether to mask the PII from it's end
-    * @return fromEnd
-    **/
+     * Whether to mask the PII from it's end
+     *
+     * @return fromEnd
+     **/
     @JsonProperty("from_end")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getFromEnd() {
         return fromEnd;
     }
@@ -153,11 +163,12 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * The hashing algorithm
-    * @return hashType
-    **/
+     * The hashing algorithm
+     *
+     * @return hashType
+     **/
     @JsonProperty("hash_type")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public HashTypeEnum getHashType() {
         return hashType;
     }
@@ -175,9 +186,10 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     /**
-    * Cryptographic key of length 128, 192 or 256 bits, in a string format
-    * @return key
-    **/
+     * Cryptographic key of length 128, 192 or 256 bits, in a string format
+     *
+     * @return key
+     **/
     @JsonProperty("key")
     public String getKey() {
         return key;
@@ -210,7 +222,7 @@ public class AnonymizeRequestAnonymizersValue  {
         sb.append("    fromEnd: ").append(toIndentedString(fromEnd)).append("\n");
         sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
         sb.append("    key: ").append(toIndentedString(key)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -227,7 +239,7 @@ public class AnonymizeRequestAnonymizersValue  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AnonymizeRequestAnonymizersValueQueryParam  {
+    public static class AnonymizeRequestAnonymizersValueQueryParam {
 
         @QueryParam("type")
         private String type;
@@ -240,46 +252,50 @@ public class AnonymizeRequestAnonymizersValue  {
         @QueryParam("fromEnd")
         private Boolean fromEnd = false;
 
-    public enum HashTypeEnum {
-        MD5(String.valueOf("md5")), SHA256(String.valueOf("sha256")), SHA512(String.valueOf("sha512"));
+        public enum HashTypeEnum {
+            MD5(String.valueOf("md5")),
+            SHA256(String.valueOf("sha256")),
+            SHA512(String.valueOf("sha512"));
 
-        // caching enum access
-        private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
+            // caching enum access
+            private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
 
-        String value;
+            String value;
 
-        HashTypeEnum (String v) {
-            value = v;
-        }
-
-        @JsonValue
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static HashTypeEnum fromString(String v) {
-            for (HashTypeEnum b : values) {
-                if (String.valueOf(b.value).equalsIgnoreCase(v)) {
-                    return b;
-                }
+            HashTypeEnum(String v) {
+                value = v;
             }
-            throw new IllegalArgumentException("Unexpected value '" + v + "'");
+
+            @JsonValue
+            public String value() {
+                return value;
+            }
+
+            @Override
+            public String toString() {
+                return String.valueOf(value);
+            }
+
+            @JsonCreator
+            public static HashTypeEnum fromString(String v) {
+                for (HashTypeEnum b : values) {
+                    if (String.valueOf(b.value).equalsIgnoreCase(v)) {
+                        return b;
+                    }
+                }
+                throw new IllegalArgumentException("Unexpected value '" + v + "'");
+            }
         }
-    }
+
         private HashTypeEnum hashType = HashTypeEnum.MD5;
         @QueryParam("key")
         private String key;
 
         /**
-        * encrypt
-        * @return type
-        **/
+         * encrypt
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -298,9 +314,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * The string to replace with
-        * @return newValue
-        **/
+         * The string to replace with
+         *
+         * @return newValue
+         **/
         @JsonProperty("new_value")
         public String getNewValue() {
             return newValue;
@@ -319,9 +336,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * The replacement character
-        * @return maskingChar
-        **/
+         * The replacement character
+         *
+         * @return maskingChar
+         **/
         @JsonProperty("masking_char")
         public String getMaskingChar() {
             return maskingChar;
@@ -340,9 +358,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * The amount of characters that should be replaced
-        * @return charsToMask
-        **/
+         * The amount of characters that should be replaced
+         *
+         * @return charsToMask
+         **/
         @JsonProperty("chars_to_mask")
         public Integer getCharsToMask() {
             return charsToMask;
@@ -361,9 +380,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * Whether to mask the PII from it's end
-        * @return fromEnd
-        **/
+         * Whether to mask the PII from it's end
+         *
+         * @return fromEnd
+         **/
         @JsonProperty("from_end")
         public Boolean getFromEnd() {
             return fromEnd;
@@ -382,9 +402,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * The hashing algorithm
-        * @return hashType
-        **/
+         * The hashing algorithm
+         *
+         * @return hashType
+         **/
         @JsonProperty("hash_type")
         public HashTypeEnum getHashType() {
             return hashType;
@@ -403,9 +424,10 @@ public class AnonymizeRequestAnonymizersValue  {
         }
 
         /**
-        * Cryptographic key of length 128, 192 or 256 bits, in a string format
-        * @return key
-        **/
+         * Cryptographic key of length 128, 192 or 256 bits, in a string format
+         *
+         * @return key
+         **/
         @JsonProperty("key")
         public String getKey() {
             return key;

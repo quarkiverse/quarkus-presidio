@@ -1,12 +1,13 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RecognizerResultWithAnaysisExplanation  {
+public class RecognizerResultWithAnaysisExplanation {
 
     private Integer start;
     private Integer end;
@@ -16,9 +17,10 @@ public class RecognizerResultWithAnaysisExplanation  {
     private AnalysisExplanation analysisExplanation;
 
     /**
-    * Where the PII starts
-    * @return start
-    **/
+     * Where the PII starts
+     *
+     * @return start
+     **/
     @JsonProperty("start")
     public Integer getStart() {
         return start;
@@ -37,9 +39,10 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     /**
-    * Where the PII ends
-    * @return end
-    **/
+     * Where the PII ends
+     *
+     * @return end
+     **/
     @JsonProperty("end")
     public Integer getEnd() {
         return end;
@@ -58,9 +61,10 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     /**
-    * The PII detection score
-    * @return score
-    **/
+     * The PII detection score
+     *
+     * @return score
+     **/
     @JsonProperty("score")
     public Double getScore() {
         return score;
@@ -79,9 +83,10 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     /**
-    * The supported PII entity types.
-    * @return entityType
-    **/
+     * The supported PII entity types.
+     *
+     * @return entityType
+     **/
     @JsonProperty("entity_type")
     public String getEntityType() {
         return entityType;
@@ -100,11 +105,12 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     /**
-    * Get recognitionMetadata
-    * @return recognitionMetadata
-    **/
+     * Get recognitionMetadata
+     *
+     * @return recognitionMetadata
+     **/
     @JsonProperty("recognition_metadata")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public RecognizedMetadata getRecognitionMetadata() {
         return recognitionMetadata;
     }
@@ -122,11 +128,12 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     /**
-    * Get analysisExplanation
-    * @return analysisExplanation
-    **/
+     * Get analysisExplanation
+     *
+     * @return analysisExplanation
+     **/
     @JsonProperty("analysis_explanation")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public AnalysisExplanation getAnalysisExplanation() {
         return analysisExplanation;
     }
@@ -157,7 +164,7 @@ public class RecognizerResultWithAnaysisExplanation  {
         sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
         sb.append("    recognitionMetadata: ").append(toIndentedString(recognitionMetadata)).append("\n");
         sb.append("    analysisExplanation: ").append(toIndentedString(analysisExplanation)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -174,7 +181,7 @@ public class RecognizerResultWithAnaysisExplanation  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class RecognizerResultWithAnaysisExplanationQueryParam  {
+    public static class RecognizerResultWithAnaysisExplanationQueryParam {
 
         @QueryParam("start")
         private Integer start;
@@ -190,9 +197,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         private AnalysisExplanation analysisExplanation;
 
         /**
-        * Where the PII starts
-        * @return start
-        **/
+         * Where the PII starts
+         *
+         * @return start
+         **/
         @JsonProperty("start")
         public Integer getStart() {
             return start;
@@ -211,9 +219,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         }
 
         /**
-        * Where the PII ends
-        * @return end
-        **/
+         * Where the PII ends
+         *
+         * @return end
+         **/
         @JsonProperty("end")
         public Integer getEnd() {
             return end;
@@ -232,9 +241,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         }
 
         /**
-        * The PII detection score
-        * @return score
-        **/
+         * The PII detection score
+         *
+         * @return score
+         **/
         @JsonProperty("score")
         public Double getScore() {
             return score;
@@ -253,9 +263,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         }
 
         /**
-        * The supported PII entity types.
-        * @return entityType
-        **/
+         * The supported PII entity types.
+         *
+         * @return entityType
+         **/
         @JsonProperty("entity_type")
         public String getEntityType() {
             return entityType;
@@ -274,9 +285,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         }
 
         /**
-        * Get recognitionMetadata
-        * @return recognitionMetadata
-        **/
+         * Get recognitionMetadata
+         *
+         * @return recognitionMetadata
+         **/
         @JsonProperty("recognition_metadata")
         public RecognizedMetadata getRecognitionMetadata() {
             return recognitionMetadata;
@@ -295,9 +307,10 @@ public class RecognizerResultWithAnaysisExplanation  {
         }
 
         /**
-        * Get analysisExplanation
-        * @return analysisExplanation
-        **/
+         * Get analysisExplanation
+         *
+         * @return analysisExplanation
+         **/
         @JsonProperty("analysis_explanation")
         public AnalysisExplanation getAnalysisExplanation() {
             return analysisExplanation;

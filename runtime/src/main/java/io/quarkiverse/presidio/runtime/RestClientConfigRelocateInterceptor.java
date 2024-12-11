@@ -9,14 +9,14 @@ public class RestClientConfigRelocateInterceptor extends RelocateConfigSourceInt
 
             if (name.startsWith("quarkus.rest-client.presidio-analyzer")) {
                 return name.replaceAll(
-                    "quarkus\\.rest-client\\.presidio-analyzer",
-                    "quarkus.presidio.analyzer");
+                        "quarkus\\.rest-client\\.presidio-analyzer",
+                        "quarkus.presidio.analyzer");
             }
 
             if (name.startsWith("quarkus.rest-client.presidio-anonymizer")) {
                 return name.replaceAll(
-                    "quarkus\\.rest-client\\.presidio-anonymizer",
-                    "quarkus.presidio.anonymizer");
+                        "quarkus\\.rest-client\\.presidio-anonymizer",
+                        "quarkus.presidio.anonymizer");
             }
 
             return name;

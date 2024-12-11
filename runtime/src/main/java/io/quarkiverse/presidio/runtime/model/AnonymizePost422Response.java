@@ -1,21 +1,23 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonymizePost422Response  {
+public class AnonymizePost422Response {
 
     private String error;
 
     /**
-    * Get error
-    * @return error
-    **/
+     * Get error
+     *
+     * @return error
+     **/
     @JsonProperty("error")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getError() {
         return error;
     }
@@ -41,7 +43,7 @@ public class AnonymizePost422Response  {
         sb.append("class AnonymizePost422Response {\n");
 
         sb.append("    error: ").append(toIndentedString(error)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -58,15 +60,16 @@ public class AnonymizePost422Response  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AnonymizePost422ResponseQueryParam  {
+    public static class AnonymizePost422ResponseQueryParam {
 
         @QueryParam("error")
         private String error;
 
         /**
-        * Get error
-        * @return error
-        **/
+         * Get error
+         *
+         * @return error
+         **/
         @JsonProperty("error")
         public String getError() {
             return error;

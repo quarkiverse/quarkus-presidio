@@ -1,37 +1,39 @@
 package io.quarkiverse.presidio.runtime.model;
 
+import jakarta.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.ws.rs.QueryParam;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace with a given character
+ * Replace with a given character
  **/
-public class Mask  {
+public class Mask {
 
     /**
-      * Replace with a given character
+     * Replace with a given character
      **/
     private String type;
     /**
-      * Replace with a given character
+     * Replace with a given character
      **/
     private String maskingChar;
     /**
-      * Replace with a given character
+     * Replace with a given character
      **/
     private Integer charsToMask;
     /**
-      * Replace with a given character
+     * Replace with a given character
      **/
     private Boolean fromEnd = false;
 
     /**
-    * mask
-    * @return type
-    **/
+     * mask
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -50,9 +52,10 @@ public class Mask  {
     }
 
     /**
-    * The replacement character
-    * @return maskingChar
-    **/
+     * The replacement character
+     *
+     * @return maskingChar
+     **/
     @JsonProperty("masking_char")
     public String getMaskingChar() {
         return maskingChar;
@@ -71,9 +74,10 @@ public class Mask  {
     }
 
     /**
-    * The amount of characters that should be replaced
-    * @return charsToMask
-    **/
+     * The amount of characters that should be replaced
+     *
+     * @return charsToMask
+     **/
     @JsonProperty("chars_to_mask")
     public Integer getCharsToMask() {
         return charsToMask;
@@ -92,11 +96,12 @@ public class Mask  {
     }
 
     /**
-    * Whether to mask the PII from it's end
-    * @return fromEnd
-    **/
+     * Whether to mask the PII from it's end
+     *
+     * @return fromEnd
+     **/
     @JsonProperty("from_end")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getFromEnd() {
         return fromEnd;
     }
@@ -125,7 +130,7 @@ public class Mask  {
         sb.append("    maskingChar: ").append(toIndentedString(maskingChar)).append("\n");
         sb.append("    charsToMask: ").append(toIndentedString(charsToMask)).append("\n");
         sb.append("    fromEnd: ").append(toIndentedString(fromEnd)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -143,35 +148,36 @@ public class Mask  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace with a given character
+     * Replace with a given character
      **/
-    public static class MaskQueryParam  {
+    public static class MaskQueryParam {
 
         /**
-          * Replace with a given character
+         * Replace with a given character
          **/
         @QueryParam("type")
         private String type;
         /**
-          * Replace with a given character
+         * Replace with a given character
          **/
         @QueryParam("maskingChar")
         private String maskingChar;
         /**
-          * Replace with a given character
+         * Replace with a given character
          **/
         @QueryParam("charsToMask")
         private Integer charsToMask;
         /**
-          * Replace with a given character
+         * Replace with a given character
          **/
         @QueryParam("fromEnd")
         private Boolean fromEnd = false;
 
         /**
-        * mask
-        * @return type
-        **/
+         * mask
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -190,9 +196,10 @@ public class Mask  {
         }
 
         /**
-        * The replacement character
-        * @return maskingChar
-        **/
+         * The replacement character
+         *
+         * @return maskingChar
+         **/
         @JsonProperty("masking_char")
         public String getMaskingChar() {
             return maskingChar;
@@ -211,9 +218,10 @@ public class Mask  {
         }
 
         /**
-        * The amount of characters that should be replaced
-        * @return charsToMask
-        **/
+         * The amount of characters that should be replaced
+         *
+         * @return charsToMask
+         **/
         @JsonProperty("chars_to_mask")
         public Integer getCharsToMask() {
             return charsToMask;
@@ -232,9 +240,10 @@ public class Mask  {
         }
 
         /**
-        * Whether to mask the PII from it's end
-        * @return fromEnd
-        **/
+         * Whether to mask the PII from it's end
+         *
+         * @return fromEnd
+         **/
         @JsonProperty("from_end")
         public Boolean getFromEnd() {
             return fromEnd;

@@ -1,30 +1,30 @@
 package io.quarkiverse.presidio.runtime.model;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace with a given value
+ * Replace with a given value
  **/
-public class Replace  {
+public class Replace {
 
     /**
-      * Replace with a given value
+     * Replace with a given value
      **/
     private String type;
     /**
-      * Replace with a given value
+     * Replace with a given value
      **/
     private String newValue;
 
     /**
-    * replace
-    * @return type
-    **/
+     * replace
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -43,9 +43,10 @@ public class Replace  {
     }
 
     /**
-    * The string to replace with
-    * @return newValue
-    **/
+     * The string to replace with
+     *
+     * @return newValue
+     **/
     @JsonProperty("new_value")
     public String getNewValue() {
         return newValue;
@@ -73,7 +74,7 @@ public class Replace  {
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    newValue: ").append(toIndentedString(newValue)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -91,25 +92,26 @@ public class Replace  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace with a given value
+     * Replace with a given value
      **/
-    public static class ReplaceQueryParam  {
+    public static class ReplaceQueryParam {
 
         /**
-          * Replace with a given value
+         * Replace with a given value
          **/
         @QueryParam("type")
         private String type;
         /**
-          * Replace with a given value
+         * Replace with a given value
          **/
         @QueryParam("newValue")
         private String newValue;
 
         /**
-        * replace
-        * @return type
-        **/
+         * replace
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -128,9 +130,10 @@ public class Replace  {
         }
 
         /**
-        * The string to replace with
-        * @return newValue
-        **/
+         * The string to replace with
+         *
+         * @return newValue
+         **/
         @JsonProperty("new_value")
         public String getNewValue() {
             return newValue;

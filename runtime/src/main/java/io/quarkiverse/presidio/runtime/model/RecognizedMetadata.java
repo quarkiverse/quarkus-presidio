@@ -1,22 +1,23 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RecognizedMetadata  {
+public class RecognizedMetadata {
 
     private String recognizerName;
 
     /**
-    * Name of recognizer that made the decision
-    * @return recognizerName
-    **/
+     * Name of recognizer that made the decision
+     *
+     * @return recognizerName
+     **/
     @JsonProperty("recognizer_name")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getRecognizerName() {
         return recognizerName;
     }
@@ -42,7 +43,7 @@ public class RecognizedMetadata  {
         sb.append("class RecognizedMetadata {\n");
 
         sb.append("    recognizerName: ").append(toIndentedString(recognizerName)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -59,15 +60,16 @@ public class RecognizedMetadata  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class RecognizedMetadataQueryParam  {
+    public static class RecognizedMetadataQueryParam {
 
         @QueryParam("recognizerName")
         private String recognizerName;
 
         /**
-        * Name of recognizer that made the decision
-        * @return recognizerName
-        **/
+         * Name of recognizer that made the decision
+         *
+         * @return recognizerName
+         **/
         @JsonProperty("recognizer_name")
         public String getRecognizerName() {
             return recognizerName;

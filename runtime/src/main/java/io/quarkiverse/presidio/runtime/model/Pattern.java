@@ -1,23 +1,25 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Pattern  {
+public class Pattern {
 
     private String name;
     private String regex;
     private Double score;
 
     /**
-    * Name of regular expression pattern
-    * @return name
-    **/
+     * Name of regular expression pattern
+     *
+     * @return name
+     **/
     @JsonProperty("name")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getName() {
         return name;
     }
@@ -35,11 +37,12 @@ public class Pattern  {
     }
 
     /**
-    * Regex pattern string
-    * @return regex
-    **/
+     * Regex pattern string
+     *
+     * @return regex
+     **/
     @JsonProperty("regex")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getRegex() {
         return regex;
     }
@@ -57,11 +60,12 @@ public class Pattern  {
     }
 
     /**
-    * Detection confidence of this pattern (0.01 if very noisy, 0.6-1.0 if very specific)
-    * @return score
-    **/
+     * Detection confidence of this pattern (0.01 if very noisy, 0.6-1.0 if very specific)
+     *
+     * @return score
+     **/
     @JsonProperty("score")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Double getScore() {
         return score;
     }
@@ -89,7 +93,7 @@ public class Pattern  {
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    regex: ").append(toIndentedString(regex)).append("\n");
         sb.append("    score: ").append(toIndentedString(score)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -106,7 +110,7 @@ public class Pattern  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class PatternQueryParam  {
+    public static class PatternQueryParam {
 
         @QueryParam("name")
         private String name;
@@ -116,9 +120,10 @@ public class Pattern  {
         private Double score;
 
         /**
-        * Name of regular expression pattern
-        * @return name
-        **/
+         * Name of regular expression pattern
+         *
+         * @return name
+         **/
         @JsonProperty("name")
         public String getName() {
             return name;
@@ -137,9 +142,10 @@ public class Pattern  {
         }
 
         /**
-        * Regex pattern string
-        * @return regex
-        **/
+         * Regex pattern string
+         *
+         * @return regex
+         **/
         @JsonProperty("regex")
         public String getRegex() {
             return regex;
@@ -158,9 +164,10 @@ public class Pattern  {
         }
 
         /**
-        * Detection confidence of this pattern (0.01 if very noisy, 0.6-1.0 if very specific)
-        * @return score
-        **/
+         * Detection confidence of this pattern (0.01 if very noisy, 0.6-1.0 if very specific)
+         *
+         * @return score
+         **/
         @JsonProperty("score")
         public Double getScore() {
             return score;

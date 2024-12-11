@@ -1,9 +1,13 @@
 package io.quarkiverse.presidio.deployment;
 
+import io.quarkiverse.presidio.runtime.Analyzer;
+import io.quarkiverse.presidio.runtime.Anonymizer;
 import io.quarkiverse.presidio.runtime.health.PresidioAnalyzerHealthCheck;
 import io.quarkiverse.presidio.runtime.health.PresidioAnonymizerHealthCheck;
+import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildStep;
+import io.quarkus.deployment.builditem.AdditionalIndexedClassesBuildItem;
 import io.quarkus.deployment.builditem.DevServicesResultBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.dev.devservices.GlobalDevServicesConfig;
@@ -80,5 +84,16 @@ class PresidioProcessor {
     HealthBuildItem addAnonymizerHealthCheck(PresidioBuildTimeConfig buildTimeConfig) {
         return new HealthBuildItem(PresidioAnonymizerHealthCheck.class.getName(),
             buildTimeConfig.healthEnabled());
+    }
+
+    @BuildStep
+    AdditionalBeanBuildItem addBeanClasses() {
+        return new AdditionalBeanBuildItem(Analyzer.class, Anonymizer.class);
+    }
+
+    @BuildStep
+    AdditionalIndexedClassesBuildItem addAdditionalClasses() {
+        return new AdditionalIndexedClassesBuildItem(Analyzer.class.getName(),
+                Anonymizer.class.getName());
     }
 }

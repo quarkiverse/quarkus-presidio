@@ -1,25 +1,27 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeanonymizeRequest  {
+public class DeanonymizeRequest {
 
     private String text;
     private Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers = new HashMap<>();
     private List<OperatorResult> anonymizerResults = new ArrayList<>();
 
     /**
-    * The anonymized text
-    * @return text
-    **/
+     * The anonymized text
+     *
+     * @return text
+     **/
     @JsonProperty("text")
     public String getText() {
         return text;
@@ -38,9 +40,10 @@ public class DeanonymizeRequest  {
     }
 
     /**
-    * Object where the key is DEFAULT or the ENTITY_TYPE and the value is decrypt since it is the only one supported
-    * @return deanonymizers
-    **/
+     * Object where the key is DEFAULT or the ENTITY_TYPE and the value is decrypt since it is the only one supported
+     *
+     * @return deanonymizers
+     **/
     @JsonProperty("deanonymizers")
     public Map<String, DeanonymizeRequestDeanonymizersValue> getDeanonymizers() {
         return deanonymizers;
@@ -57,18 +60,20 @@ public class DeanonymizeRequest  {
         this.deanonymizers = deanonymizers;
         return this;
     }
+
     public DeanonymizeRequest putDeanonymizersItem(String key, DeanonymizeRequestDeanonymizersValue deanonymizersItem) {
-           if (this.deanonymizers == null){
-                deanonymizers = new HashMap<>();
-            }
+        if (this.deanonymizers == null) {
+            deanonymizers = new HashMap<>();
+        }
         this.deanonymizers.put(key, deanonymizersItem);
         return this;
     }
 
     /**
-    * Array of anonymized PIIs
-    * @return anonymizerResults
-    **/
+     * Array of anonymized PIIs
+     *
+     * @return anonymizerResults
+     **/
     @JsonProperty("anonymizer_results")
     public List<OperatorResult> getAnonymizerResults() {
         return anonymizerResults;
@@ -85,8 +90,9 @@ public class DeanonymizeRequest  {
         this.anonymizerResults = anonymizerResults;
         return this;
     }
+
     public DeanonymizeRequest addAnonymizerResultsItem(OperatorResult anonymizerResultsItem) {
-        if (this.anonymizerResults == null){
+        if (this.anonymizerResults == null) {
             anonymizerResults = new ArrayList<>();
         }
         this.anonymizerResults.add(anonymizerResultsItem);
@@ -104,7 +110,7 @@ public class DeanonymizeRequest  {
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    deanonymizers: ").append(toIndentedString(deanonymizers)).append("\n");
         sb.append("    anonymizerResults: ").append(toIndentedString(anonymizerResults)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -121,7 +127,7 @@ public class DeanonymizeRequest  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class DeanonymizeRequestQueryParam  {
+    public static class DeanonymizeRequestQueryParam {
 
         @QueryParam("text")
         private String text;
@@ -131,9 +137,10 @@ public class DeanonymizeRequest  {
         private List<OperatorResult> anonymizerResults = null;
 
         /**
-        * The anonymized text
-        * @return text
-        **/
+         * The anonymized text
+         *
+         * @return text
+         **/
         @JsonProperty("text")
         public String getText() {
             return text;
@@ -152,9 +159,10 @@ public class DeanonymizeRequest  {
         }
 
         /**
-        * Object where the key is DEFAULT or the ENTITY_TYPE and the value is decrypt since it is the only one supported
-        * @return deanonymizers
-        **/
+         * Object where the key is DEFAULT or the ENTITY_TYPE and the value is decrypt since it is the only one supported
+         *
+         * @return deanonymizers
+         **/
         @JsonProperty("deanonymizers")
         public Map<String, DeanonymizeRequestDeanonymizersValue> getDeanonymizers() {
             return deanonymizers;
@@ -171,15 +179,18 @@ public class DeanonymizeRequest  {
             this.deanonymizers = deanonymizers;
             return this;
         }
-        public DeanonymizeRequestQueryParam putDeanonymizersItem(String key, DeanonymizeRequestDeanonymizersValue deanonymizersItem) {
+
+        public DeanonymizeRequestQueryParam putDeanonymizersItem(String key,
+                DeanonymizeRequestDeanonymizersValue deanonymizersItem) {
             this.deanonymizers.put(key, deanonymizersItem);
             return this;
         }
 
         /**
-        * Array of anonymized PIIs
-        * @return anonymizerResults
-        **/
+         * Array of anonymized PIIs
+         *
+         * @return anonymizerResults
+         **/
         @JsonProperty("anonymizer_results")
         public List<OperatorResult> getAnonymizerResults() {
             return anonymizerResults;
@@ -196,6 +207,7 @@ public class DeanonymizeRequest  {
             this.anonymizerResults = anonymizerResults;
             return this;
         }
+
         public DeanonymizeRequestQueryParam addAnonymizerResultsItem(OperatorResult anonymizerResultsItem) {
             this.anonymizerResults.add(anonymizerResultsItem);
             return this;

@@ -1,14 +1,16 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnalyzeRequest  {
+public class AnalyzeRequest {
 
     private String text;
     private String language;
@@ -20,9 +22,10 @@ public class AnalyzeRequest  {
     private List<String> context;
 
     /**
-    * The text to analyze
-    * @return text
-    **/
+     * The text to analyze
+     *
+     * @return text
+     **/
     @JsonProperty("text")
     public String getText() {
         return text;
@@ -41,9 +44,10 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * Two characters for the desired language in ISO_639-1 format
-    * @return language
-    **/
+     * Two characters for the desired language in ISO_639-1 format
+     *
+     * @return language
+     **/
     @JsonProperty("language")
     public String getLanguage() {
         return language;
@@ -62,11 +66,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * A correlation id to append to headers and traces
-    * @return correlationId
-    **/
+     * A correlation id to append to headers and traces
+     *
+     * @return correlationId
+     **/
     @JsonProperty("correlation_id")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getCorrelationId() {
         return correlationId;
     }
@@ -84,11 +89,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * The minimal detection score threshold
-    * @return scoreThreshold
-    **/
+     * The minimal detection score threshold
+     *
+     * @return scoreThreshold
+     **/
     @JsonProperty("score_threshold")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Double getScoreThreshold() {
         return scoreThreshold;
     }
@@ -106,11 +112,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * A list of entities to analyze
-    * @return entities
-    **/
+     * A list of entities to analyze
+     *
+     * @return entities
+     **/
     @JsonProperty("entities")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<String> getEntities() {
         return entities;
     }
@@ -126,8 +133,9 @@ public class AnalyzeRequest  {
         this.entities = entities;
         return this;
     }
+
     public AnalyzeRequest addEntitiesItem(String entitiesItem) {
-        if (this.entities == null){
+        if (this.entities == null) {
             entities = new ArrayList<>();
         }
         this.entities.add(entitiesItem);
@@ -135,11 +143,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * Whether to include analysis explanation in the response
-    * @return returnDecisionProcess
-    **/
+     * Whether to include analysis explanation in the response
+     *
+     * @return returnDecisionProcess
+     **/
     @JsonProperty("return_decision_process")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public Boolean getReturnDecisionProcess() {
         return returnDecisionProcess;
     }
@@ -157,11 +166,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * list of recognizers to be used in the context of this request only (ad-hoc).
-    * @return adHocRecognizers
-    **/
+     * list of recognizers to be used in the context of this request only (ad-hoc).
+     *
+     * @return adHocRecognizers
+     **/
     @JsonProperty("ad_hoc_recognizers")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<PatternRecognizer> getAdHocRecognizers() {
         return adHocRecognizers;
     }
@@ -177,8 +187,9 @@ public class AnalyzeRequest  {
         this.adHocRecognizers = adHocRecognizers;
         return this;
     }
+
     public AnalyzeRequest addAdHocRecognizersItem(PatternRecognizer adHocRecognizersItem) {
-        if (this.adHocRecognizers == null){
+        if (this.adHocRecognizers == null) {
             adHocRecognizers = new ArrayList<>();
         }
         this.adHocRecognizers.add(adHocRecognizersItem);
@@ -186,11 +197,12 @@ public class AnalyzeRequest  {
     }
 
     /**
-    * list of context words which may help to raise recognized entities confidence
-    * @return context
-    **/
+     * list of context words which may help to raise recognized entities confidence
+     *
+     * @return context
+     **/
     @JsonProperty("context")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<String> getContext() {
         return context;
     }
@@ -206,8 +218,9 @@ public class AnalyzeRequest  {
         this.context = context;
         return this;
     }
+
     public AnalyzeRequest addContextItem(String contextItem) {
-        if (this.context == null){
+        if (this.context == null) {
             context = new ArrayList<>();
         }
         this.context.add(contextItem);
@@ -230,7 +243,7 @@ public class AnalyzeRequest  {
         sb.append("    returnDecisionProcess: ").append(toIndentedString(returnDecisionProcess)).append("\n");
         sb.append("    adHocRecognizers: ").append(toIndentedString(adHocRecognizers)).append("\n");
         sb.append("    context: ").append(toIndentedString(context)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -247,7 +260,7 @@ public class AnalyzeRequest  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AnalyzeRequestQueryParam  {
+    public static class AnalyzeRequestQueryParam {
 
         @QueryParam("text")
         private String text;
@@ -267,9 +280,10 @@ public class AnalyzeRequest  {
         private List<String> context = null;
 
         /**
-        * The text to analyze
-        * @return text
-        **/
+         * The text to analyze
+         *
+         * @return text
+         **/
         @JsonProperty("text")
         public String getText() {
             return text;
@@ -288,9 +302,10 @@ public class AnalyzeRequest  {
         }
 
         /**
-        * Two characters for the desired language in ISO_639-1 format
-        * @return language
-        **/
+         * Two characters for the desired language in ISO_639-1 format
+         *
+         * @return language
+         **/
         @JsonProperty("language")
         public String getLanguage() {
             return language;
@@ -309,9 +324,10 @@ public class AnalyzeRequest  {
         }
 
         /**
-        * A correlation id to append to headers and traces
-        * @return correlationId
-        **/
+         * A correlation id to append to headers and traces
+         *
+         * @return correlationId
+         **/
         @JsonProperty("correlation_id")
         public String getCorrelationId() {
             return correlationId;
@@ -330,9 +346,10 @@ public class AnalyzeRequest  {
         }
 
         /**
-        * The minimal detection score threshold
-        * @return scoreThreshold
-        **/
+         * The minimal detection score threshold
+         *
+         * @return scoreThreshold
+         **/
         @JsonProperty("score_threshold")
         public Double getScoreThreshold() {
             return scoreThreshold;
@@ -351,9 +368,10 @@ public class AnalyzeRequest  {
         }
 
         /**
-        * A list of entities to analyze
-        * @return entities
-        **/
+         * A list of entities to analyze
+         *
+         * @return entities
+         **/
         @JsonProperty("entities")
         public List<String> getEntities() {
             return entities;
@@ -370,15 +388,17 @@ public class AnalyzeRequest  {
             this.entities = entities;
             return this;
         }
+
         public AnalyzeRequestQueryParam addEntitiesItem(String entitiesItem) {
             this.entities.add(entitiesItem);
             return this;
         }
 
         /**
-        * Whether to include analysis explanation in the response
-        * @return returnDecisionProcess
-        **/
+         * Whether to include analysis explanation in the response
+         *
+         * @return returnDecisionProcess
+         **/
         @JsonProperty("return_decision_process")
         public Boolean getReturnDecisionProcess() {
             return returnDecisionProcess;
@@ -397,9 +417,10 @@ public class AnalyzeRequest  {
         }
 
         /**
-        * list of recognizers to be used in the context of this request only (ad-hoc).
-        * @return adHocRecognizers
-        **/
+         * list of recognizers to be used in the context of this request only (ad-hoc).
+         *
+         * @return adHocRecognizers
+         **/
         @JsonProperty("ad_hoc_recognizers")
         public List<PatternRecognizer> getAdHocRecognizers() {
             return adHocRecognizers;
@@ -416,15 +437,17 @@ public class AnalyzeRequest  {
             this.adHocRecognizers = adHocRecognizers;
             return this;
         }
+
         public AnalyzeRequestQueryParam addAdHocRecognizersItem(PatternRecognizer adHocRecognizersItem) {
             this.adHocRecognizers.add(adHocRecognizersItem);
             return this;
         }
 
         /**
-        * list of context words which may help to raise recognized entities confidence
-        * @return context
-        **/
+         * list of context words which may help to raise recognized entities confidence
+         *
+         * @return context
+         **/
         @JsonProperty("context")
         public List<String> getContext() {
             return context;
@@ -441,6 +464,7 @@ public class AnalyzeRequest  {
             this.context = context;
             return this;
         }
+
         public AnalyzeRequestQueryParam addContextItem(String contextItem) {
             this.context.add(contextItem);
             return this;

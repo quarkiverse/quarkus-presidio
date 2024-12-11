@@ -1,25 +1,27 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnonymizeResponse  {
+public class AnonymizeResponse {
 
     private String text;
     private List<OperatorResult> items;
 
     /**
-    * Get text
-    * @return text
-    **/
+     * Get text
+     *
+     * @return text
+     **/
     @JsonProperty("text")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getText() {
         return text;
     }
@@ -37,11 +39,12 @@ public class AnonymizeResponse  {
     }
 
     /**
-    * Array of anonymized entities
-    * @return items
-    **/
+     * Array of anonymized entities
+     *
+     * @return items
+     **/
     @JsonProperty("items")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<OperatorResult> getItems() {
         return items;
     }
@@ -57,8 +60,9 @@ public class AnonymizeResponse  {
         this.items = items;
         return this;
     }
+
     public AnonymizeResponse addItemsItem(OperatorResult itemsItem) {
-        if (this.items == null){
+        if (this.items == null) {
             items = new ArrayList<>();
         }
         this.items.add(itemsItem);
@@ -75,7 +79,7 @@ public class AnonymizeResponse  {
 
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -92,7 +96,7 @@ public class AnonymizeResponse  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AnonymizeResponseQueryParam  {
+    public static class AnonymizeResponseQueryParam {
 
         @QueryParam("text")
         private String text;
@@ -100,9 +104,10 @@ public class AnonymizeResponse  {
         private List<OperatorResult> items = null;
 
         /**
-        * Get text
-        * @return text
-        **/
+         * Get text
+         *
+         * @return text
+         **/
         @JsonProperty("text")
         public String getText() {
             return text;
@@ -121,9 +126,10 @@ public class AnonymizeResponse  {
         }
 
         /**
-        * Array of anonymized entities
-        * @return items
-        **/
+         * Array of anonymized entities
+         *
+         * @return items
+         **/
         @JsonProperty("items")
         public List<OperatorResult> getItems() {
             return items;
@@ -140,6 +146,7 @@ public class AnonymizeResponse  {
             this.items = items;
             return this;
         }
+
         public AnonymizeResponseQueryParam addItemsItem(OperatorResult itemsItem) {
             this.items.add(itemsItem);
             return this;

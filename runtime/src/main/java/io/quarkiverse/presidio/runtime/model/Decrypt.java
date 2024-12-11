@@ -1,28 +1,30 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace encrypted PII decrypted text
+ * Replace encrypted PII decrypted text
  **/
-public class Decrypt  {
+public class Decrypt {
 
     /**
-      * Replace encrypted PII decrypted text
+     * Replace encrypted PII decrypted text
      **/
     private String type;
     /**
-      * Replace encrypted PII decrypted text
+     * Replace encrypted PII decrypted text
      **/
     private String key;
 
     /**
-    * decrypt
-    * @return type
-    **/
+     * decrypt
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -41,9 +43,10 @@ public class Decrypt  {
     }
 
     /**
-    * Cryptographic key of length 128, 192 or 256 bits, in a string format
-    * @return key
-    **/
+     * Cryptographic key of length 128, 192 or 256 bits, in a string format
+     *
+     * @return key
+     **/
     @JsonProperty("key")
     public String getKey() {
         return key;
@@ -71,7 +74,7 @@ public class Decrypt  {
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    key: ").append(toIndentedString(key)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -89,25 +92,26 @@ public class Decrypt  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace encrypted PII decrypted text
+     * Replace encrypted PII decrypted text
      **/
-    public static class DecryptQueryParam  {
+    public static class DecryptQueryParam {
 
         /**
-          * Replace encrypted PII decrypted text
+         * Replace encrypted PII decrypted text
          **/
         @QueryParam("type")
         private String type;
         /**
-          * Replace encrypted PII decrypted text
+         * Replace encrypted PII decrypted text
          **/
         @QueryParam("key")
         private String key;
 
         /**
-        * decrypt
-        * @return type
-        **/
+         * decrypt
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -126,9 +130,10 @@ public class Decrypt  {
         }
 
         /**
-        * Cryptographic key of length 128, 192 or 256 bits, in a string format
-        * @return key
-        **/
+         * Cryptographic key of length 128, 192 or 256 bits, in a string format
+         *
+         * @return key
+         **/
         @JsonProperty("key")
         public String getKey() {
             return key;

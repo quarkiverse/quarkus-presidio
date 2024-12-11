@@ -35,12 +35,14 @@ public class PresidioResourceTest {
 
         assertThat(recognizerResultWithAnaysisExplanations).hasSize(2);
 
-        final RecognizerResultWithAnaysisExplanation personEntity = recognizerResultWithAnaysisExplanations.getFirst();
+        final RecognizerResultWithAnaysisExplanation personEntity = recognizerResultWithAnaysisExplanations.get(0);
         assertThat(personEntity.getEntityType()).isEqualTo("PERSON");
         assertThat(personEntity.getStart()).isEqualTo(0);
         assertThat(personEntity.getEnd()).isEqualTo(10);
 
-        final RecognizerResultWithAnaysisExplanation driverLicenseEntity = recognizerResultWithAnaysisExplanations.getLast();
+        int lastElementPosition = recognizerResultWithAnaysisExplanations.size() - 1;
+
+        final RecognizerResultWithAnaysisExplanation driverLicenseEntity = recognizerResultWithAnaysisExplanations.get(lastElementPosition);
         assertThat(driverLicenseEntity.getEntityType()).isEqualTo("US_DRIVER_LICENSE");
         assertThat(driverLicenseEntity.getStart()).isEqualTo(30);
         assertThat(driverLicenseEntity.getEnd()).isEqualTo(38);

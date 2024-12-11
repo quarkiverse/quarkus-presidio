@@ -1,12 +1,10 @@
 package io.quarkiverse.presidio.runtime.model;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AnalysisExplanation  {
+public class AnalysisExplanation {
 
     private String recognizer;
     private String patternName;
@@ -19,11 +17,12 @@ public class AnalysisExplanation  {
     private Double validationResult;
 
     /**
-    * Name of recognizer that made the decision
-    * @return recognizer
-    **/
+     * Name of recognizer that made the decision
+     *
+     * @return recognizer
+     **/
     @JsonProperty("recognizer")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getRecognizer() {
         return recognizer;
     }
@@ -41,11 +40,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * name of pattern (if decision was made by a PatternRecognizer)
-    * @return patternName
-    **/
+     * name of pattern (if decision was made by a PatternRecognizer)
+     *
+     * @return patternName
+     **/
     @JsonProperty("pattern_name")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getPatternName() {
         return patternName;
     }
@@ -63,11 +63,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * Regex pattern that was applied (if PatternRecognizer)
-    * @return pattern
-    **/
+     * Regex pattern that was applied (if PatternRecognizer)
+     *
+     * @return pattern
+     **/
     @JsonProperty("pattern")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getPattern() {
         return pattern;
     }
@@ -85,11 +86,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * Recognizer's confidence in result
-    * @return originalScore
-    **/
+     * Recognizer's confidence in result
+     *
+     * @return originalScore
+     **/
     @JsonProperty("original_score")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public Double getOriginalScore() {
         return originalScore;
     }
@@ -107,11 +109,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * The PII detection score
-    * @return score
-    **/
+     * The PII detection score
+     *
+     * @return score
+     **/
     @JsonProperty("score")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public Double getScore() {
         return score;
     }
@@ -129,11 +132,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * Free text for describing a decision of a logic or model
-    * @return textualExplanation
-    **/
+     * Free text for describing a decision of a logic or model
+     *
+     * @return textualExplanation
+     **/
     @JsonProperty("textual_explanation")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getTextualExplanation() {
         return textualExplanation;
     }
@@ -151,11 +155,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * Difference from the original score
-    * @return scoreContextImprovement
-    **/
+     * Difference from the original score
+     *
+     * @return scoreContextImprovement
+     **/
     @JsonProperty("score_context_improvement")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public Double getScoreContextImprovement() {
         return scoreContextImprovement;
     }
@@ -173,11 +178,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * The context word which helped increase the score
-    * @return supportiveContextWord
-    **/
+     * The context word which helped increase the score
+     *
+     * @return supportiveContextWord
+     **/
     @JsonProperty("supportive_context_word")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getSupportiveContextWord() {
         return supportiveContextWord;
     }
@@ -195,11 +201,12 @@ public class AnalysisExplanation  {
     }
 
     /**
-    * Result of a validation (e.g. checksum)
-    * @return validationResult
-    **/
+     * Result of a validation (e.g. checksum)
+     *
+     * @return validationResult
+     **/
     @JsonProperty("validation_result")
-          @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public Double getValidationResult() {
         return validationResult;
     }
@@ -233,7 +240,7 @@ public class AnalysisExplanation  {
         sb.append("    scoreContextImprovement: ").append(toIndentedString(scoreContextImprovement)).append("\n");
         sb.append("    supportiveContextWord: ").append(toIndentedString(supportiveContextWord)).append("\n");
         sb.append("    validationResult: ").append(toIndentedString(validationResult)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -250,7 +257,7 @@ public class AnalysisExplanation  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class AnalysisExplanationQueryParam  {
+    public static class AnalysisExplanationQueryParam {
 
         @jakarta.ws.rs.QueryParam("recognizer")
         private String recognizer;
@@ -272,9 +279,10 @@ public class AnalysisExplanation  {
         private Double validationResult;
 
         /**
-        * Name of recognizer that made the decision
-        * @return recognizer
-        **/
+         * Name of recognizer that made the decision
+         *
+         * @return recognizer
+         **/
         @JsonProperty("recognizer")
         public String getRecognizer() {
             return recognizer;
@@ -293,9 +301,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * name of pattern (if decision was made by a PatternRecognizer)
-        * @return patternName
-        **/
+         * name of pattern (if decision was made by a PatternRecognizer)
+         *
+         * @return patternName
+         **/
         @JsonProperty("pattern_name")
         public String getPatternName() {
             return patternName;
@@ -314,9 +323,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * Regex pattern that was applied (if PatternRecognizer)
-        * @return pattern
-        **/
+         * Regex pattern that was applied (if PatternRecognizer)
+         *
+         * @return pattern
+         **/
         @JsonProperty("pattern")
         public String getPattern() {
             return pattern;
@@ -335,9 +345,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * Recognizer's confidence in result
-        * @return originalScore
-        **/
+         * Recognizer's confidence in result
+         *
+         * @return originalScore
+         **/
         @JsonProperty("original_score")
         public Double getOriginalScore() {
             return originalScore;
@@ -356,9 +367,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * The PII detection score
-        * @return score
-        **/
+         * The PII detection score
+         *
+         * @return score
+         **/
         @JsonProperty("score")
         public Double getScore() {
             return score;
@@ -377,9 +389,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * Free text for describing a decision of a logic or model
-        * @return textualExplanation
-        **/
+         * Free text for describing a decision of a logic or model
+         *
+         * @return textualExplanation
+         **/
         @JsonProperty("textual_explanation")
         public String getTextualExplanation() {
             return textualExplanation;
@@ -398,9 +411,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * Difference from the original score
-        * @return scoreContextImprovement
-        **/
+         * Difference from the original score
+         *
+         * @return scoreContextImprovement
+         **/
         @JsonProperty("score_context_improvement")
         public Double getScoreContextImprovement() {
             return scoreContextImprovement;
@@ -419,9 +433,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * The context word which helped increase the score
-        * @return supportiveContextWord
-        **/
+         * The context word which helped increase the score
+         *
+         * @return supportiveContextWord
+         **/
         @JsonProperty("supportive_context_word")
         public String getSupportiveContextWord() {
             return supportiveContextWord;
@@ -440,9 +455,10 @@ public class AnalysisExplanation  {
         }
 
         /**
-        * Result of a validation (e.g. checksum)
-        * @return validationResult
-        **/
+         * Result of a validation (e.g. checksum)
+         *
+         * @return validationResult
+         **/
         @JsonProperty("validation_result")
         public Double getValidationResult() {
             return validationResult;

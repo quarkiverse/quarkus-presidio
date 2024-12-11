@@ -1,25 +1,27 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeanonymizeResponse  {
+public class DeanonymizeResponse {
 
     private String text;
     private List<OperatorResult> items;
 
     /**
-    * Get text
-    * @return text
-    **/
+     * Get text
+     *
+     * @return text
+     **/
     @JsonProperty("text")
-          @JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+    @JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
     public String getText() {
         return text;
     }
@@ -37,11 +39,12 @@ public class DeanonymizeResponse  {
     }
 
     /**
-    * Array of deanonymized entities
-    * @return items
-    **/
+     * Array of deanonymized entities
+     *
+     * @return items
+     **/
     @JsonProperty("items")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public List<OperatorResult> getItems() {
         return items;
     }
@@ -57,8 +60,9 @@ public class DeanonymizeResponse  {
         this.items = items;
         return this;
     }
+
     public DeanonymizeResponse addItemsItem(OperatorResult itemsItem) {
-        if (this.items == null){
+        if (this.items == null) {
             items = new ArrayList<>();
         }
         this.items.add(itemsItem);
@@ -75,7 +79,7 @@ public class DeanonymizeResponse  {
 
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
         sb.append("    items: ").append(toIndentedString(items)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -92,7 +96,7 @@ public class DeanonymizeResponse  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class DeanonymizeResponseQueryParam  {
+    public static class DeanonymizeResponseQueryParam {
 
         @QueryParam("text")
         private String text;
@@ -100,9 +104,10 @@ public class DeanonymizeResponse  {
         private List<OperatorResult> items = null;
 
         /**
-        * Get text
-        * @return text
-        **/
+         * Get text
+         *
+         * @return text
+         **/
         @JsonProperty("text")
         public String getText() {
             return text;
@@ -121,9 +126,10 @@ public class DeanonymizeResponse  {
         }
 
         /**
-        * Array of deanonymized entities
-        * @return items
-        **/
+         * Array of deanonymized entities
+         *
+         * @return items
+         **/
         @JsonProperty("items")
         public List<OperatorResult> getItems() {
             return items;
@@ -140,6 +146,7 @@ public class DeanonymizeResponse  {
             this.items = items;
             return this;
         }
+
         public DeanonymizeResponseQueryParam addItemsItem(OperatorResult itemsItem) {
             this.items.add(itemsItem);
             return this;

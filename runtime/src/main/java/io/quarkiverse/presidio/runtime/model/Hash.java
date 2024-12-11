@@ -1,31 +1,34 @@
 package io.quarkiverse.presidio.runtime.model;
 
+import jakarta.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
-import jakarta.ws.rs.QueryParam;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace with hashed value
+ * Replace with hashed value
  **/
-public class Hash  {
+public class Hash {
 
     /**
-      * Replace with hashed value
+     * Replace with hashed value
      **/
     private String type;
 
     public enum HashTypeEnum {
-        MD5(String.valueOf("md5")), SHA256(String.valueOf("sha256")), SHA512(String.valueOf("sha512"));
+        MD5(String.valueOf("md5")),
+        SHA256(String.valueOf("sha256")),
+        SHA512(String.valueOf("sha512"));
 
         // caching enum access
         private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
 
         String value;
 
-        HashTypeEnum (String v) {
+        HashTypeEnum(String v) {
             value = v;
         }
 
@@ -49,15 +52,17 @@ public class Hash  {
             throw new IllegalArgumentException("Unexpected value '" + v + "'");
         }
     }
+
     /**
-      * Replace with hashed value
+     * Replace with hashed value
      **/
     private HashTypeEnum hashType = HashTypeEnum.MD5;
 
     /**
-    * hash
-    * @return type
-    **/
+     * hash
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -76,11 +81,12 @@ public class Hash  {
     }
 
     /**
-    * The hashing algorithm
-    * @return hashType
-    **/
+     * The hashing algorithm
+     *
+     * @return hashType
+     **/
     @JsonProperty("hash_type")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public HashTypeEnum getHashType() {
         return hashType;
     }
@@ -107,7 +113,7 @@ public class Hash  {
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    hashType: ").append(toIndentedString(hashType)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -125,57 +131,61 @@ public class Hash  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace with hashed value
+     * Replace with hashed value
      **/
-    public static class HashQueryParam  {
+    public static class HashQueryParam {
 
         /**
-          * Replace with hashed value
+         * Replace with hashed value
          **/
         @QueryParam("type")
         private String type;
 
-    public enum HashTypeEnum {
-        MD5(String.valueOf("md5")), SHA256(String.valueOf("sha256")), SHA512(String.valueOf("sha512"));
+        public enum HashTypeEnum {
+            MD5(String.valueOf("md5")),
+            SHA256(String.valueOf("sha256")),
+            SHA512(String.valueOf("sha512"));
 
-        // caching enum access
-        private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
+            // caching enum access
+            private static final java.util.EnumSet<HashTypeEnum> values = java.util.EnumSet.allOf(HashTypeEnum.class);
 
-        String value;
+            String value;
 
-        HashTypeEnum (String v) {
-            value = v;
-        }
-
-        @JsonValue
-        public String value() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @com.fasterxml.jackson.annotation.JsonCreator
-        public static HashTypeEnum fromString(String v) {
-            for (HashTypeEnum b : values) {
-                if (String.valueOf(b.value).equalsIgnoreCase(v)) {
-                    return b;
-                }
+            HashTypeEnum(String v) {
+                value = v;
             }
-            throw new IllegalArgumentException("Unexpected value '" + v + "'");
+
+            @JsonValue
+            public String value() {
+                return value;
+            }
+
+            @Override
+            public String toString() {
+                return String.valueOf(value);
+            }
+
+            @com.fasterxml.jackson.annotation.JsonCreator
+            public static HashTypeEnum fromString(String v) {
+                for (HashTypeEnum b : values) {
+                    if (String.valueOf(b.value).equalsIgnoreCase(v)) {
+                        return b;
+                    }
+                }
+                throw new IllegalArgumentException("Unexpected value '" + v + "'");
+            }
         }
-    }
+
         /**
-          * Replace with hashed value
+         * Replace with hashed value
          **/
         private HashTypeEnum hashType = HashTypeEnum.MD5;
 
         /**
-        * hash
-        * @return type
-        **/
+         * hash
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -194,9 +204,10 @@ public class Hash  {
         }
 
         /**
-        * The hashing algorithm
-        * @return hashType
-        **/
+         * The hashing algorithm
+         *
+         * @return hashType
+         **/
         @JsonProperty("hash_type")
         public HashTypeEnum getHashType() {
             return hashType;

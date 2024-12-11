@@ -1,12 +1,13 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OperatorResult  {
+public class OperatorResult {
 
     private String operator;
     private String entityType;
@@ -15,11 +16,12 @@ public class OperatorResult  {
     private String text;
 
     /**
-    * Name of the used operator
-    * @return operator
-    **/
+     * Name of the used operator
+     *
+     * @return operator
+     **/
     @JsonProperty("operator")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getOperator() {
         return operator;
     }
@@ -37,9 +39,10 @@ public class OperatorResult  {
     }
 
     /**
-    * Type of the PII entity
-    * @return entityType
-    **/
+     * Type of the PII entity
+     *
+     * @return entityType
+     **/
     @JsonProperty("entity_type")
     public String getEntityType() {
         return entityType;
@@ -58,9 +61,10 @@ public class OperatorResult  {
     }
 
     /**
-    * Start index of the changed text
-    * @return start
-    **/
+     * Start index of the changed text
+     *
+     * @return start
+     **/
     @JsonProperty("start")
     public Integer getStart() {
         return start;
@@ -79,9 +83,10 @@ public class OperatorResult  {
     }
 
     /**
-    * End index in the changed text
-    * @return end
-    **/
+     * End index in the changed text
+     *
+     * @return end
+     **/
     @JsonProperty("end")
     public Integer getEnd() {
         return end;
@@ -100,11 +105,12 @@ public class OperatorResult  {
     }
 
     /**
-    * The new text returned
-    * @return text
-    **/
+     * The new text returned
+     *
+     * @return text
+     **/
     @JsonProperty("text")
-          @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     public String getText() {
         return text;
     }
@@ -134,7 +140,7 @@ public class OperatorResult  {
         sb.append("    start: ").append(toIndentedString(start)).append("\n");
         sb.append("    end: ").append(toIndentedString(end)).append("\n");
         sb.append("    text: ").append(toIndentedString(text)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -151,7 +157,7 @@ public class OperatorResult  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class OperatorResultQueryParam  {
+    public static class OperatorResultQueryParam {
 
         @QueryParam("operator")
         private String operator;
@@ -165,9 +171,10 @@ public class OperatorResult  {
         private String text;
 
         /**
-        * Name of the used operator
-        * @return operator
-        **/
+         * Name of the used operator
+         *
+         * @return operator
+         **/
         @JsonProperty("operator")
         public String getOperator() {
             return operator;
@@ -186,9 +193,10 @@ public class OperatorResult  {
         }
 
         /**
-        * Type of the PII entity
-        * @return entityType
-        **/
+         * Type of the PII entity
+         *
+         * @return entityType
+         **/
         @JsonProperty("entity_type")
         public String getEntityType() {
             return entityType;
@@ -207,9 +215,10 @@ public class OperatorResult  {
         }
 
         /**
-        * Start index of the changed text
-        * @return start
-        **/
+         * Start index of the changed text
+         *
+         * @return start
+         **/
         @JsonProperty("start")
         public Integer getStart() {
             return start;
@@ -228,9 +237,10 @@ public class OperatorResult  {
         }
 
         /**
-        * End index in the changed text
-        * @return end
-        **/
+         * End index in the changed text
+         *
+         * @return end
+         **/
         @JsonProperty("end")
         public Integer getEnd() {
             return end;
@@ -249,9 +259,10 @@ public class OperatorResult  {
         }
 
         /**
-        * The new text returned
-        * @return text
-        **/
+         * The new text returned
+         *
+         * @return text
+         **/
         @JsonProperty("text")
         public String getText() {
             return text;

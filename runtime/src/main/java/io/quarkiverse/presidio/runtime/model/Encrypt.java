@@ -1,28 +1,30 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 /**
-  * Replace with an encrypted value
+ * Replace with an encrypted value
  **/
-public class Encrypt  {
+public class Encrypt {
 
     /**
-      * Replace with an encrypted value
+     * Replace with an encrypted value
      **/
     private String type;
     /**
-      * Replace with an encrypted value
+     * Replace with an encrypted value
      **/
     private String key;
 
     /**
-    * encrypt
-    * @return type
-    **/
+     * encrypt
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -41,9 +43,10 @@ public class Encrypt  {
     }
 
     /**
-    * Cryptographic key of length 128, 192 or 256 bits, in a string format
-    * @return key
-    **/
+     * Cryptographic key of length 128, 192 or 256 bits, in a string format
+     *
+     * @return key
+     **/
     @JsonProperty("key")
     public String getKey() {
         return key;
@@ -71,7 +74,7 @@ public class Encrypt  {
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    key: ").append(toIndentedString(key)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -89,25 +92,26 @@ public class Encrypt  {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     /**
-      * Replace with an encrypted value
+     * Replace with an encrypted value
      **/
-    public static class EncryptQueryParam  {
+    public static class EncryptQueryParam {
 
         /**
-          * Replace with an encrypted value
+         * Replace with an encrypted value
          **/
         @QueryParam("type")
         private String type;
         /**
-          * Replace with an encrypted value
+         * Replace with an encrypted value
          **/
         @QueryParam("key")
         private String key;
 
         /**
-        * encrypt
-        * @return type
-        **/
+         * encrypt
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -126,9 +130,10 @@ public class Encrypt  {
         }
 
         /**
-        * Cryptographic key of length 128, 192 or 256 bits, in a string format
-        * @return key
-        **/
+         * Cryptographic key of length 128, 192 or 256 bits, in a string format
+         *
+         * @return key
+         **/
         @JsonProperty("key")
         public String getKey() {
             return key;

@@ -1,20 +1,21 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.ws.rs.QueryParam;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeanonymizeRequestDeanonymizersValue  {
+public class DeanonymizeRequestDeanonymizersValue {
 
     private String type;
     private String key;
 
     /**
-    * decrypt
-    * @return type
-    **/
+     * decrypt
+     *
+     * @return type
+     **/
     @JsonProperty("type")
     public String getType() {
         return type;
@@ -33,9 +34,10 @@ public class DeanonymizeRequestDeanonymizersValue  {
     }
 
     /**
-    * Cryptographic key of length 128, 192 or 256 bits, in a string format
-    * @return key
-    **/
+     * Cryptographic key of length 128, 192 or 256 bits, in a string format
+     *
+     * @return key
+     **/
     @JsonProperty("key")
     public String getKey() {
         return key;
@@ -63,7 +65,7 @@ public class DeanonymizeRequestDeanonymizersValue  {
 
         sb.append("    type: ").append(toIndentedString(type)).append("\n");
         sb.append("    key: ").append(toIndentedString(key)).append("\n");
-        
+
         sb.append("}");
         return sb.toString();
     }
@@ -80,7 +82,7 @@ public class DeanonymizeRequestDeanonymizersValue  {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class DeanonymizeRequestDeanonymizersValueQueryParam  {
+    public static class DeanonymizeRequestDeanonymizersValueQueryParam {
 
         @QueryParam("type")
         private String type;
@@ -88,9 +90,10 @@ public class DeanonymizeRequestDeanonymizersValue  {
         private String key;
 
         /**
-        * decrypt
-        * @return type
-        **/
+         * decrypt
+         *
+         * @return type
+         **/
         @JsonProperty("type")
         public String getType() {
             return type;
@@ -109,9 +112,10 @@ public class DeanonymizeRequestDeanonymizersValue  {
         }
 
         /**
-        * Cryptographic key of length 128, 192 or 256 bits, in a string format
-        * @return key
-        **/
+         * Cryptographic key of length 128, 192 or 256 bits, in a string format
+         *
+         * @return key
+         **/
         @JsonProperty("key")
         public String getKey() {
             return key;
