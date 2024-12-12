@@ -2,7 +2,6 @@ package io.quarkiverse.presidio.runtime;
 
 import java.util.List;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -24,7 +23,6 @@ import io.quarkiverse.presidio.runtime.model.DeanonymizeResponse;
  */
 @Path("")
 @RegisterRestClient(configKey = "presidio-anonymizer")
-@ApplicationScoped
 public interface Anonymizer {
 
     /**

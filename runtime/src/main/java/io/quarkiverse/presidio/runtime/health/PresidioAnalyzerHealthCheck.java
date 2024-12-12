@@ -7,6 +7,7 @@ import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
 import org.eclipse.microprofile.health.Readiness;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkiverse.presidio.runtime.Analyzer;
 
@@ -16,7 +17,7 @@ public class PresidioAnalyzerHealthCheck implements HealthCheck {
 
     private final Analyzer analyzer;
 
-    public PresidioAnalyzerHealthCheck(final Analyzer analyzer) {
+    public PresidioAnalyzerHealthCheck(@RestClient final Analyzer analyzer) {
         this.analyzer = analyzer;
     }
 

@@ -6,14 +6,10 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.utility.DockerImageName;
 
-import io.quarkiverse.presidio.runtime.Analyzer;
-import io.quarkiverse.presidio.runtime.Anonymizer;
 import io.quarkiverse.presidio.runtime.health.PresidioAnalyzerHealthCheck;
 import io.quarkiverse.presidio.runtime.health.PresidioAnonymizerHealthCheck;
-import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildStep;
-import io.quarkus.deployment.builditem.AdditionalIndexedClassesBuildItem;
 import io.quarkus.deployment.builditem.DevServicesResultBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.dev.devservices.GlobalDevServicesConfig;
@@ -45,7 +41,7 @@ class PresidioProcessor {
 
         final String newUrl = "http://" + container.getHost() + ":" + container.getMappedPort(3000);
 
-        final Map<String, String> configOverrides = Map.of("quarkus.presidio.analyzer.url", newUrl);
+        final Map<String, String> configOverrides = Map.of("quarkus.rest-client.presidio-analyzer.url", newUrl);
 
         return new DevServicesResultBuildItem.RunningDevService(FEATURE + "-analyzer", container.getContainerId(),
                 container::close, configOverrides)
@@ -69,7 +65,7 @@ class PresidioProcessor {
 
         final String newUrl = "http://" + container.getHost() + ":" + container.getMappedPort(3000);
 
-        final Map<String, String> configOverrides = Map.of("quarkus.presidio.anonymizer.url", newUrl);
+        final Map<String, String> configOverrides = Map.of("quarkus.rest-client.presidio-anonymizer.url", newUrl);
 
         return new DevServicesResultBuildItem.RunningDevService(FEATURE + "-anonymizer", container.getContainerId(),
                 container::close, configOverrides)
@@ -86,16 +82,5 @@ class PresidioProcessor {
     HealthBuildItem addAnonymizerHealthCheck(PresidioBuildTimeConfig buildTimeConfig) {
         return new HealthBuildItem(PresidioAnonymizerHealthCheck.class.getName(),
                 buildTimeConfig.healthEnabled());
-    }
-
-    @BuildStep
-    AdditionalBeanBuildItem addBeanClasses() {
-        return new AdditionalBeanBuildItem(Analyzer.class, Anonymizer.class);
-    }
-
-    @BuildStep
-    AdditionalIndexedClassesBuildItem addAdditionalClasses() {
-        return new AdditionalIndexedClassesBuildItem(Analyzer.class.getName(),
-                Anonymizer.class.getName());
     }
 }

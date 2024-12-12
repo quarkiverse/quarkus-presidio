@@ -4,12 +4,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.eclipse.microprofile.rest.client.inject.RestClient;
+import jakarta.inject.Inject;
+
 import org.junit.jupiter.api.Test;
 
-import io.quarkiverse.presidio.runtime.Analyzer;
-import io.quarkiverse.presidio.runtime.Anonymizer;
-import io.quarkiverse.presidio.runtime.model.AnalyzeRequest;
 import io.quarkiverse.presidio.runtime.model.AnonymizeRequest;
 import io.quarkiverse.presidio.runtime.model.AnonymizeRequestAnonymizersValue;
 import io.quarkiverse.presidio.runtime.model.AnonymizeResponse;
@@ -20,20 +18,14 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 public class PresidioResourceTest {
 
-    @RestClient
-    Analyzer analyzer;
-
-    @RestClient
-    Anonymizer anonymizer;
+    @Inject
+    PresidioService presidioService;
 
     @Test
     public void shouldAnalyzeText() {
-        AnalyzeRequest analyzeRequest = new AnalyzeRequest();
-        analyzeRequest.text("John Smith drivers license is AC432223");
-        analyzeRequest.language("en");
 
-        List<RecognizerResultWithAnaysisExplanation> recognizerResultWithAnaysisExplanations = analyzer
-                .analyzePost(analyzeRequest);
+        List<RecognizerResultWithAnaysisExplanation> recognizerResultWithAnaysisExplanations = presidioService
+                .analyze("John Smith drivers license is AC432223", "en");
 
         assertThat(recognizerResultWithAnaysisExplanations).hasSize(2);
 
@@ -56,11 +48,7 @@ public class PresidioResourceTest {
 
         String text = "hello world, my name is Jane Doe. My number is: 034453334";
 
-        AnalyzeRequest analyzeRequest = new AnalyzeRequest();
-        analyzeRequest.language("en");
-        analyzeRequest.text(text);
-
-        List<RecognizerResultWithAnaysisExplanation> recognizerResults = analyzer.analyzePost(analyzeRequest);
+        List<RecognizerResultWithAnaysisExplanation> recognizerResults = presidioService.analyze(text, "en");
 
         AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
         REPLACE.setType("replace");
@@ -92,7 +80,7 @@ public class PresidioResourceTest {
                 })
                 .forEach(anonymizeRequest::addAnalyzerResultsItem);
 
-        AnonymizeResponse anonymizeResponse = anonymizer.anonymizePost(anonymizeRequest);
+        AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRequest);
 
         assertThat(anonymizeResponse.getText())
                 .isEqualTo("hello world, my name is ANONYMIZED. My number is: 03445****");
