@@ -51,7 +51,6 @@ public class RecognizerResultWithAnaysisExplanation extends RecognizerResult {
         @QueryParam("analysisExplanation")
         private AnalysisExplanation analysisExplanation;
 
-
         /**
          * Get analysisExplanation
          *
