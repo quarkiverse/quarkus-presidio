@@ -55,5 +55,4 @@ public interface PresidioDevServiceConfig {
     @WithDefault("true")
     boolean analyzerReuse();
 
-
 }

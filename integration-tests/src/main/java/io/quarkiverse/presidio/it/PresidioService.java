@@ -53,9 +53,7 @@ public class PresidioService {
         anonymizeRequest.putAnonymizersItem("DEFAULT", REPLACE);
         anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
         anonymizeRequest.analyzerResults(
-                Collections.unmodifiableList(recognizerResults)
-        );
-
+                Collections.unmodifiableList(recognizerResults));
 
         return this.anonymizer.anonymizePost(anonymizeRequest);
     }
