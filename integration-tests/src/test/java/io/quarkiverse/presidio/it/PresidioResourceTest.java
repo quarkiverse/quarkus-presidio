@@ -2,6 +2,7 @@ package io.quarkiverse.presidio.it;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.List;
 
 import jakarta.inject.Inject;
@@ -66,19 +67,10 @@ public class PresidioResourceTest {
 
         anonymizeRequest.putAnonymizersItem("DEFAULT", REPLACE);
         anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
+        anonymizeRequest.analyzerResults(
+                Collections.unmodifiableList(recognizerResults)
+        );
 
-        recognizerResults
-                .stream()
-                .map(r -> {
-                    RecognizerResult recognizerResult = new RecognizerResult();
-                    recognizerResult.setEnd(r.getEnd());
-                    recognizerResult.setEntityType(r.getEntityType());
-                    recognizerResult.setStart(r.getStart());
-                    recognizerResult.setScore(r.getScore());
-
-                    return recognizerResult;
-                })
-                .forEach(anonymizeRequest::addAnalyzerResultsItem);
 
         AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRequest);
 
