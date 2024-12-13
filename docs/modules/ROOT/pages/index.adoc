@@ -118,6 +118,8 @@ AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRe
 anonymizeResponse.getText();
 ----
 
+You can check an example in the `integration-tests` module in the repo of the extension.
+
 == Health Check integration
 
 If your project imports https://quarkus.io/guides/smallrye-health[Quarkus Health Check extension] then this extension registers two readiness health checks pinging the analyzer and anonymizer instances.
