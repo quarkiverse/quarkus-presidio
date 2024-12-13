@@ -50,29 +50,7 @@ public class PresidioResourceTest {
         String text = "hello world, my name is Jane Doe. My number is: 034453334";
 
         List<RecognizerResultWithAnaysisExplanation> recognizerResults = presidioService.analyze(text, "en");
-
-        AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
-        REPLACE.setType("replace");
-        REPLACE.setNewValue("ANONYMIZED");
-
-        AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
-        PHONE.setType("mask");
-        PHONE.setMaskingChar("*");
-        PHONE.setCharsToMask(4);
-        PHONE.setFromEnd(true);
-
-        AnonymizeRequest anonymizeRequest = new AnonymizeRequest();
-
-        anonymizeRequest.setText(text);
-
-        anonymizeRequest.putAnonymizersItem("DEFAULT", REPLACE);
-        anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
-        anonymizeRequest.analyzerResults(
-                Collections.unmodifiableList(recognizerResults)
-        );
-
-
-        AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRequest);
+        AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(text, recognizerResults);
 
         assertThat(anonymizeResponse.getText())
                 .isEqualTo("hello world, my name is ANONYMIZED. My number is: 03445****");
