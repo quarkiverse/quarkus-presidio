@@ -9,7 +9,7 @@
     </parent>
     <groupId>io.quarkiverse.presidio</groupId>
     <artifactId>quarkus-presidio-parent</artifactId>
-    <version>999-SNAPSHOT</version>
+    <version>0.2.0</version>
     <packaging>pom</packaging>
     <name>Quarkus Presidio - Parent</name>
 
@@ -22,7 +22,8 @@
         <connection>scm:git:git@github.com:quarkiverse/quarkus-presidio.git</connection>
         <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-presidio.git</developerConnection>
         <url>https://github.com/quarkiverse/quarkus-presidio</url>
-    </scm>
+      <tag>0.2.0</tag>
+  </scm>
 
     <properties>
         <quarkus.version>3.17.4</quarkus.version>
