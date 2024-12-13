@@ -3,25 +3,29 @@ package io.quarkiverse.presidio.it;
 import java.util.Collections;
 import java.util.List;
 
-import io.quarkiverse.presidio.runtime.model.*;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkiverse.presidio.runtime.Analyzer;
 import io.quarkiverse.presidio.runtime.Anonymizer;
+import io.quarkiverse.presidio.runtime.model.AnalyzeRequest;
+import io.quarkiverse.presidio.runtime.model.AnonymizeRequest;
+import io.quarkiverse.presidio.runtime.model.AnonymizeRequestAnonymizersValue;
+import io.quarkiverse.presidio.runtime.model.AnonymizeResponse;
+import io.quarkiverse.presidio.runtime.model.RecognizerResultWithAnaysisExplanation;
 
 @ApplicationScoped
 public class PresidioService {
+
+    static AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
+    static AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
 
     @RestClient
     Analyzer analyzer;
 
     @RestClient
     Anonymizer anonymizer;
-
-    static AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
-    static AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
 
     public PresidioService() {
 
@@ -53,9 +57,7 @@ public class PresidioService {
         anonymizeRequest.putAnonymizersItem("DEFAULT", REPLACE);
         anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
         anonymizeRequest.analyzerResults(
-                Collections.unmodifiableList(recognizerResults)
-        );
-
+                Collections.unmodifiableList(recognizerResults));
 
         return this.anonymizer.anonymizePost(anonymizeRequest);
     }
