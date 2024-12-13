@@ -35,7 +35,7 @@ class PresidioProcessor {
         GenericContainer container = new GenericContainer<>(dockerImageName)
                 .withExposedPorts(3000)
                 .waitingFor(Wait.forLogMessage(".*" + "Running on all " + ".*", 1))
-                .withReuse(true);
+                .withReuse(config.anonymizerReuse());
 
         container.start();
 
@@ -59,7 +59,7 @@ class PresidioProcessor {
         GenericContainer container = new GenericContainer<>(dockerImageName)
                 .withExposedPorts(3000)
                 .waitingFor(Wait.forLogMessage(".*" + "Running on all " + ".*", 1))
-                .withReuse(true);
+                .withReuse(config.anonymizerReuse());
 
         container.start();
 

@@ -6,7 +6,7 @@ import io.smallrye.config.ConfigMapping;
 import io.smallrye.config.WithDefault;
 import io.smallrye.config.WithName;
 
-@ConfigMapping(prefix = "quarkus.presidio.devservice")
+@ConfigMapping(prefix = "quarkus.presidio.devservices")
 @ConfigRoot(phase = ConfigPhase.BUILD_TIME)
 public interface PresidioDevServiceConfig {
 
@@ -40,5 +40,20 @@ public interface PresidioDevServiceConfig {
     @WithName("analyzer.image")
     @WithDefault(ANALYZER_IMAGE)
     String analyzerImageName();
+
+    /**
+     * Sets reusable anonymizer container
+     */
+    @WithName("anonymizer.reuse")
+    @WithDefault("true")
+    boolean anonymizerReuse();
+
+    /**
+     * Sets reusable analyzer container
+     */
+    @WithName("analyzer.reuse")
+    @WithDefault("true")
+    boolean analyzerReuse();
+
 
 }

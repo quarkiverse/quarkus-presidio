@@ -2,7 +2,11 @@
 
 include::./includes/attributes.adoc[]
 
-TIP: Describe what the extension does here.
+This extension provides a REST Client to interact with https://microsoft.github.io/presidio/[Presidio] Analyzer and Anonymizer services.
+
+Apart from providing a REST Client, this extension integrates with https://quarkus.io/guides/smallrye-health[Quarkus Health Check extension] registering a readness probe against Presidio `/health` endpoint.
+
+Moreover, it provides https://quarkus.io/guides/dev-services[DevServices] integration starting an Analyzer and an Anonymizer service, and configuring the `URL` pointing to these instances.
 
 == Installation
 
@@ -19,9 +23,116 @@ For instance, with Maven, add the following dependency to your POM file:
 </dependency>
 ----
 
+== Usage
+
+This extension provides an integration with Presidio implementing a https://quarkus.io/guides/rest-client[Microprofile Rest Client], so everything that is valid there like configuration properties are also valid for this extension.
+
+For example the Rest Client config key for the analyzer is `presidio-analyzer` while for the anonymizer is `presidio-anonymizer`.
+Hence, to configure the URL for analyzer and anonymizer you should add the following properties to the `application.properties` file:
+
+[source,properties,subs=attributes+]
+----
+quarkus.rest-client.presidio-analyzer.url=http://www.example.org/analyzer
+quarkus.rest-client.presidio-anonymizer.url=http://www.example.org/anonymizer
+----
+
+Then you can inject the `io.quarkiverse.presidio.runtime.Analyzer` to analyze a text in the following way:
+
+[source, java, subs=attributes+]
+----
+@RestClient
+Analyzer analyzer;
+----
+
+In the same way, you can inject the anonymizer `io.quarkiverse.presidio.runtime.Anonymizer`:
+
+[source,java,subs=attributes+]
+----
+@RestClient
+Anonymizer analyzer;
+----
+
+To understand the required objects o run it, we recommend you taking a look at the https://github.com/microsoft/presidio/blob/main/docs/api-docs/api-docs.yml[Presidio OpenAPI] document, as there is a direct relationship between objects and the API.
+
+== Example
+
+Presidio works by first analyzing and identifying patterns in a text and then run the anonymizer configuring what to anonymize and how.
+
+=== Analyzing
+
+To analyze a text:
+
+[source,java,subs=attributes+]
+----
+AnalyzeRequest analyzeRequest = new AnalyzeRequest();
+analyzeRequest.text("John Smith drivers license is AC432223");
+analyzeRequest.language("en");
+
+List<RecognizerResultWithAnaysisExplanation> explanations = analyzer.analyzePost(analyzeRequest);
+----
+
+Then you can iterate over the list to get all the information about the detected entities that could be anonymized.
+
+=== Anonymizer
+
+To anonymize you need to create a complex object which:
+
+. Defines how to anonymize the content, for example replace the content with `ANONYMIZED` or if it is a phone number with 4 `*`.
+. Add the results from the analyze call.
+. Run anonymizer.
+
+[source,java,subs=attributes+]
+----
+List<RecognizerResultWithAnaysisExplanation> recognizerResults = ...;
+
+// Defines how to anonymize the content
+
+AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
+REPLACE.setType("replace");
+REPLACE.setNewValue("ANONYMIZED");
+
+AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
+PHONE.setType("mask");
+PHONE.setMaskingChar("*");
+PHONE.setCharsToMask(4);
+PHONE.setFromEnd(true);
+
+// Registers text to anonymize and the Anonymizers
+
+AnonymizeRequest anonymizeRequest = new AnonymizeRequest();
+anonymizeRequest.setText(text);
+
+// By default replaces content
+anonymizeRequest.putAnonymizersItem("DEFAULT", REPLACE);
+
+// If detects a phone number it masks it
+anonymizeRequest.putAnonymizersItem("PHONE_NUMBER", PHONE);
+
+// Sets the analyzer results. You need to cast the objects for this reason, use Collections object to do it automatically.
+anonymizeRequest.analyzerResults(
+    Collections.unmodifiableList(recognizerResults)
+);
+
+// Anonymize elements
+AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRequest);
+anonymizeResponse.getText();
+----
+
+== Health Check integration
+
+If your project imports https://quarkus.io/guides/smallrye-health[Quarkus Health Check extension] then this extension registers two readiness health checks pinging the analyzer and anonymizer instances.
+You can disable this by setting `quarkus.presidio.health.enabled` to false.
+
+== Dev Services
+
+When starting Quarkus in Dev or Test mode, it will start a contaienr containing an instance of Presidio analyzer and another container with the Presidio anonymizer.
+Moreover, it will configure the application to connect to these instances.
+
+You can disable dev services individually using `quarkus.presidio.devservices.{analyzer/anonymizer}.enabled=false`.
+
+Also you can override the default container images using `quarkus.presidio.devservices.{analyzer/anonymizer}.image=newImage`
+
 [[extension-configuration-reference]]
 == Extension Configuration Reference
-
-TIP: Remove this section if you don't have Quarkus configuration properties in your extension.
 
 include::includes/quarkus-presidio.adoc[leveloffset=+1, opts=optional]

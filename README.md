@@ -11,9 +11,7 @@ This extension provides a REST Client to interact with [Presidio](https://micros
 
 Apart from providing a REST Client, this extension integrates with [Quarkus Health Check extension](https://quarkus.io/guides/smallrye-health) registering a readness probe against Presidio `/health` endpoint.
 
-Moreover, it provides [DevServices](https://quarkus.io/guides/dev-services) integration starting an Analyzer and an Anonymizer service, and configuring the `URL` pointing to these isntances.
-
-
+Moreover, it provides [DevServices](https://quarkus.io/guides/dev-services) integration starting an Analyzer and an Anonymizer service, and configuring the `URL` pointing to these instances.
 
 ## Contributors ✨
 
