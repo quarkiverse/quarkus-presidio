@@ -1,5 +1,8 @@
 package io.quarkiverse.presidio.runtime.model;
 
+import java.security.PrivateKey;
+import java.util.Base64;
+
 import jakarta.ws.rs.QueryParam;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,37 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Replace with an encrypted value
  **/
-public class Encrypt {
+public class Encrypt extends Operator {
 
-    /**
-     * Replace with an encrypted value
-     **/
-    private String type;
     /**
      * Replace with an encrypted value
      **/
     private String key;
 
-    /**
-     * encrypt
-     *
-     * @return type
-     **/
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public Encrypt() {
+        super("encrypt");
     }
 
-    /**
-     * Set type
-     **/
-    public void setType(String type) {
-        this.type = type;
+    public Encrypt(String key) {
+        this();
+        this.setType(key);
     }
 
-    public Encrypt type(String type) {
-        this.type = type;
-        return this;
+    public Encrypt(PrivateKey key) {
+        this();
+        this.setKey(Base64.getEncoder().encodeToString(key.getEncoded()));
     }
 
     /**
@@ -94,39 +85,16 @@ public class Encrypt {
     /**
      * Replace with an encrypted value
      **/
-    public static class EncryptQueryParam {
+    public static class EncryptQueryParam extends OperatorQueryParam {
 
-        /**
-         * Replace with an encrypted value
-         **/
-        @QueryParam("type")
-        private String type;
         /**
          * Replace with an encrypted value
          **/
         @QueryParam("key")
         private String key;
 
-        /**
-         * encrypt
-         *
-         * @return type
-         **/
-        @JsonProperty("type")
-        public String getType() {
-            return type;
-        }
-
-        /**
-         * Set type
-         **/
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public EncryptQueryParam type(String type) {
-            this.type = type;
-            return this;
+        public EncryptQueryParam() {
+            super("encrypt");
         }
 
         /**

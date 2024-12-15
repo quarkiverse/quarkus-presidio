@@ -10,12 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Replace with a given character
  **/
-public class Mask {
+public class Mask extends Operator {
 
-    /**
-     * Replace with a given character
-     **/
-    private String type;
     /**
      * Replace with a given character
      **/
@@ -29,26 +25,15 @@ public class Mask {
      **/
     private Boolean fromEnd = false;
 
-    /**
-     * mask
-     *
-     * @return type
-     **/
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public Mask() {
+        super("mask");
     }
 
-    /**
-     * Set type
-     **/
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Mask type(String type) {
-        this.type = type;
-        return this;
+    public Mask(String maskingChar, Integer charsToMask, Boolean fromEnd) {
+        this();
+        this.setMaskingChar(maskingChar);
+        this.setCharsToMask(charsToMask);
+        this.setFromEnd(fromEnd);
     }
 
     /**
@@ -150,13 +135,8 @@ public class Mask {
     /**
      * Replace with a given character
      **/
-    public static class MaskQueryParam {
+    public static class MaskQueryParam extends OperatorQueryParam {
 
-        /**
-         * Replace with a given character
-         **/
-        @QueryParam("type")
-        private String type;
         /**
          * Replace with a given character
          **/
@@ -173,26 +153,8 @@ public class Mask {
         @QueryParam("fromEnd")
         private Boolean fromEnd = false;
 
-        /**
-         * mask
-         *
-         * @return type
-         **/
-        @JsonProperty("type")
-        public String getType() {
-            return type;
-        }
-
-        /**
-         * Set type
-         **/
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public MaskQueryParam type(String type) {
-            this.type = type;
-            return this;
+        public MaskQueryParam() {
+            super("mask");
         }
 
         /**

@@ -1,5 +1,8 @@
 package io.quarkiverse.presidio.runtime.model;
 
+import java.security.PublicKey;
+import java.util.Base64;
+
 import jakarta.ws.rs.QueryParam;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,37 +12,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Replace encrypted PII decrypted text
  **/
-public class Decrypt {
+public class Decrypt extends Operator {
 
-    /**
-     * Replace encrypted PII decrypted text
-     **/
-    private String type;
     /**
      * Replace encrypted PII decrypted text
      **/
     private String key;
 
-    /**
-     * decrypt
-     *
-     * @return type
-     **/
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public Decrypt() {
+        super("decrypt");
     }
 
-    /**
-     * Set type
-     **/
-    public void setType(String type) {
-        this.type = type;
+    public Decrypt(String key) {
+        this();
+        this.setKey(key);
     }
 
-    public Decrypt type(String type) {
-        this.type = type;
-        return this;
+    public Decrypt(PublicKey key) {
+        this();
+        this.setKey(Base64.getEncoder().encodeToString(key.getEncoded()));
     }
 
     /**
@@ -94,39 +85,16 @@ public class Decrypt {
     /**
      * Replace encrypted PII decrypted text
      **/
-    public static class DecryptQueryParam {
+    public static class DecryptQueryParam extends OperatorQueryParam {
 
-        /**
-         * Replace encrypted PII decrypted text
-         **/
-        @QueryParam("type")
-        private String type;
         /**
          * Replace encrypted PII decrypted text
          **/
         @QueryParam("key")
         private String key;
 
-        /**
-         * decrypt
-         *
-         * @return type
-         **/
-        @JsonProperty("type")
-        public String getType() {
-            return type;
-        }
-
-        /**
-         * Set type
-         **/
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public DecryptQueryParam type(String type) {
-            this.type = type;
-            return this;
+        public DecryptQueryParam() {
+            super("decrypt");
         }
 
         /**

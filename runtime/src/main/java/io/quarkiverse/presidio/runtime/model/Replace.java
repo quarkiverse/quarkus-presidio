@@ -9,37 +9,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Replace with a given value
  **/
-public class Replace {
+public class Replace extends Operator {
 
-    /**
-     * Replace with a given value
-     **/
-    private String type;
     /**
      * Replace with a given value
      **/
     private String newValue;
 
-    /**
-     * replace
-     *
-     * @return type
-     **/
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public Replace() {
+        super("replace");
     }
 
-    /**
-     * Set type
-     **/
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Replace type(String type) {
-        this.type = type;
-        return this;
+    public Replace(String newValue) {
+        this();
+        this.setNewValue(newValue);
     }
 
     /**
@@ -94,40 +77,17 @@ public class Replace {
     /**
      * Replace with a given value
      **/
-    public static class ReplaceQueryParam {
+    public static class ReplaceQueryParam extends OperatorQueryParam {
 
-        /**
-         * Replace with a given value
-         **/
-        @QueryParam("type")
-        private String type;
+        public ReplaceQueryParam() {
+            super("replace");
+        }
+
         /**
          * Replace with a given value
          **/
         @QueryParam("newValue")
         private String newValue;
-
-        /**
-         * replace
-         *
-         * @return type
-         **/
-        @JsonProperty("type")
-        public String getType() {
-            return type;
-        }
-
-        /**
-         * Set type
-         **/
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public ReplaceQueryParam type(String type) {
-            this.type = type;
-            return this;
-        }
 
         /**
          * The string to replace with

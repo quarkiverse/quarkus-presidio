@@ -87,15 +87,8 @@ List<RecognizerResultWithAnaysisExplanation> recognizerResults = ...;
 
 // Defines how to anonymize the content
 
-AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
-REPLACE.setType("replace");
-REPLACE.setNewValue("ANONYMIZED");
-
-AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
-PHONE.setType("mask");
-PHONE.setMaskingChar("*");
-PHONE.setCharsToMask(4);
-PHONE.setFromEnd(true);
+static Replace REPLACE = new Replace("ANONYMIZED");
+static Mask PHONE = new Mask("*", 4, true);
 
 // Registers text to anonymize and the Anonymizers
 
@@ -119,6 +112,21 @@ anonymizeResponse.getText();
 ----
 
 You can check an example in the `integration-tests` module in the repo of the extension.
+
+=== Types of Anonymizers
+
+This extension supports the default anonymizers defined by Presidio:
+
+* `io.quarkiverse.presidio.runtime.model.Redact`
+* `io.quarkiverse.presidio.runtime.model.Replace`
+* `io.quarkiverse.presidio.runtime.model.Mash`
+* `io.quarkiverse.presidio.runtime.model.Hash`
+* `io.quarkiverse.presidio.runtime.model.Encrypt`
+* `io.quarkiverse.presidio.runtime.model.Decrypt`
+
+If your Presidio instance registers other anonymizers, you can implement the class extending `io.quarkiverse.presidio.runtime.model.Operator` abstract class.
+
+These classes are POJOs marshalled using the Jackson mapper, check any other of the provided classes to see how they are implemented.
 
 == Health Check integration
 

@@ -9,35 +9,19 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import io.quarkiverse.presidio.runtime.Analyzer;
 import io.quarkiverse.presidio.runtime.Anonymizer;
-import io.quarkiverse.presidio.runtime.model.AnalyzeRequest;
-import io.quarkiverse.presidio.runtime.model.AnonymizeRequest;
-import io.quarkiverse.presidio.runtime.model.AnonymizeRequestAnonymizersValue;
-import io.quarkiverse.presidio.runtime.model.AnonymizeResponse;
-import io.quarkiverse.presidio.runtime.model.RecognizerResultWithAnaysisExplanation;
+import io.quarkiverse.presidio.runtime.model.*;
 
 @ApplicationScoped
 public class PresidioService {
 
-    static AnonymizeRequestAnonymizersValue REPLACE = new AnonymizeRequestAnonymizersValue();
-    static AnonymizeRequestAnonymizersValue PHONE = new AnonymizeRequestAnonymizersValue();
+    static Replace REPLACE = new Replace("ANONYMIZED");
+    static Mask PHONE = new Mask("*", 4, true);
 
     @RestClient
     Analyzer analyzer;
 
     @RestClient
     Anonymizer anonymizer;
-
-    public PresidioService() {
-
-        REPLACE.setType("replace");
-        REPLACE.setNewValue("ANONYMIZED");
-
-        PHONE.setType("mask");
-        PHONE.setMaskingChar("*");
-        PHONE.setCharsToMask(4);
-        PHONE.setFromEnd(true);
-
-    }
 
     public List<RecognizerResultWithAnaysisExplanation> analyze(String text, String language) {
         AnalyzeRequest analyzeRequest = new AnalyzeRequest();

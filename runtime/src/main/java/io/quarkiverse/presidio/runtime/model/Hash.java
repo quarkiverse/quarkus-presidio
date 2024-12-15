@@ -1,7 +1,5 @@
 package io.quarkiverse.presidio.runtime.model;
 
-import jakarta.ws.rs.QueryParam;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,12 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Replace with hashed value
  **/
-public class Hash {
-
-    /**
-     * Replace with hashed value
-     **/
-    private String type;
+public class Hash extends Operator {
 
     public enum HashTypeEnum {
         MD5(String.valueOf("md5")),
@@ -58,26 +51,13 @@ public class Hash {
      **/
     private HashTypeEnum hashType = HashTypeEnum.MD5;
 
-    /**
-     * hash
-     *
-     * @return type
-     **/
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public Hash() {
+        super("hash");
     }
 
-    /**
-     * Set type
-     **/
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public Hash type(String type) {
-        this.type = type;
-        return this;
+    public Hash(HashTypeEnum hash) {
+        this();
+        this.setHashType(hash);
     }
 
     /**
@@ -133,13 +113,11 @@ public class Hash {
     /**
      * Replace with hashed value
      **/
-    public static class HashQueryParam {
+    public static class HashQueryParam extends OperatorQueryParam {
 
-        /**
-         * Replace with hashed value
-         **/
-        @QueryParam("type")
-        private String type;
+        protected HashQueryParam() {
+            super("hash");
+        }
 
         public enum HashTypeEnum {
             MD5(String.valueOf("md5")),
@@ -180,28 +158,6 @@ public class Hash {
          * Replace with hashed value
          **/
         private HashTypeEnum hashType = HashTypeEnum.MD5;
-
-        /**
-         * hash
-         *
-         * @return type
-         **/
-        @JsonProperty("type")
-        public String getType() {
-            return type;
-        }
-
-        /**
-         * Set type
-         **/
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public HashQueryParam type(String type) {
-            this.type = type;
-            return this;
-        }
 
         /**
          * The hashing algorithm
