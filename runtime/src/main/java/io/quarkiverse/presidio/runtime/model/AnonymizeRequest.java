@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AnonymizeRequest {
 
     private String text;
-    private Map<String, AnonymizeRequestAnonymizersValue> anonymizers;
+    private Map<String, Operator> anonymizers;
     private List<RecognizerResult> analyzerResults = new ArrayList<>();
 
     /**
@@ -47,23 +47,23 @@ public class AnonymizeRequest {
      **/
     @JsonProperty("anonymizers")
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public Map<String, AnonymizeRequestAnonymizersValue> getAnonymizers() {
+    public Map<String, Operator> getAnonymizers() {
         return anonymizers;
     }
 
     /**
      * Set anonymizers
      **/
-    public void setAnonymizers(Map<String, AnonymizeRequestAnonymizersValue> anonymizers) {
+    public void setAnonymizers(Map<String, Operator> anonymizers) {
         this.anonymizers = anonymizers;
     }
 
-    public AnonymizeRequest anonymizers(Map<String, AnonymizeRequestAnonymizersValue> anonymizers) {
+    public AnonymizeRequest anonymizers(Map<String, Operator> anonymizers) {
         this.anonymizers = anonymizers;
         return this;
     }
 
-    public AnonymizeRequest putAnonymizersItem(String key, AnonymizeRequestAnonymizersValue anonymizersItem) {
+    public AnonymizeRequest putAnonymizersItem(String key, Operator anonymizersItem) {
         if (this.anonymizers == null) {
             anonymizers = new HashMap<>();
         }
@@ -134,7 +134,7 @@ public class AnonymizeRequest {
         @QueryParam("text")
         private String text;
         @QueryParam("anonymizers")
-        private Map<String, AnonymizeRequestAnonymizersValue> anonymizers = null;
+        private Map<String, OperatorQueryParam> anonymizers = null;
         @QueryParam("analyzerResults")
         private List<RecognizerResult> analyzerResults = null;
 
@@ -166,23 +166,23 @@ public class AnonymizeRequest {
          * @return anonymizers
          **/
         @JsonProperty("anonymizers")
-        public Map<String, AnonymizeRequestAnonymizersValue> getAnonymizers() {
+        public Map<String, OperatorQueryParam> getAnonymizers() {
             return anonymizers;
         }
 
         /**
          * Set anonymizers
          **/
-        public void setAnonymizers(Map<String, AnonymizeRequestAnonymizersValue> anonymizers) {
+        public void setAnonymizers(Map<String, OperatorQueryParam> anonymizers) {
             this.anonymizers = anonymizers;
         }
 
-        public AnonymizeRequestQueryParam anonymizers(Map<String, AnonymizeRequestAnonymizersValue> anonymizers) {
+        public AnonymizeRequestQueryParam anonymizers(Map<String, OperatorQueryParam> anonymizers) {
             this.anonymizers = anonymizers;
             return this;
         }
 
-        public AnonymizeRequestQueryParam putAnonymizersItem(String key, AnonymizeRequestAnonymizersValue anonymizersItem) {
+        public AnonymizeRequestQueryParam putAnonymizersItem(String key, OperatorQueryParam anonymizersItem) {
             this.anonymizers.put(key, anonymizersItem);
             return this;
         }

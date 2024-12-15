@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class DeanonymizeRequest {
 
     private String text;
-    private Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers = new HashMap<>();
+    private Map<String, Operator> deanonymizers = new HashMap<>();
     private List<OperatorResult> anonymizerResults = new ArrayList<>();
 
     /**
@@ -45,23 +45,23 @@ public class DeanonymizeRequest {
      * @return deanonymizers
      **/
     @JsonProperty("deanonymizers")
-    public Map<String, DeanonymizeRequestDeanonymizersValue> getDeanonymizers() {
+    public Map<String, Operator> getDeanonymizers() {
         return deanonymizers;
     }
 
     /**
      * Set deanonymizers
      **/
-    public void setDeanonymizers(Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers) {
+    public void setDeanonymizers(Map<String, Operator> deanonymizers) {
         this.deanonymizers = deanonymizers;
     }
 
-    public DeanonymizeRequest deanonymizers(Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers) {
+    public DeanonymizeRequest deanonymizers(Map<String, Operator> deanonymizers) {
         this.deanonymizers = deanonymizers;
         return this;
     }
 
-    public DeanonymizeRequest putDeanonymizersItem(String key, DeanonymizeRequestDeanonymizersValue deanonymizersItem) {
+    public DeanonymizeRequest putDeanonymizersItem(String key, Operator deanonymizersItem) {
         if (this.deanonymizers == null) {
             deanonymizers = new HashMap<>();
         }
@@ -132,7 +132,7 @@ public class DeanonymizeRequest {
         @QueryParam("text")
         private String text;
         @QueryParam("deanonymizers")
-        private Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers = null;
+        private Map<String, OperatorQueryParam> deanonymizers = null;
         @QueryParam("anonymizerResults")
         private List<OperatorResult> anonymizerResults = null;
 
@@ -164,24 +164,24 @@ public class DeanonymizeRequest {
          * @return deanonymizers
          **/
         @JsonProperty("deanonymizers")
-        public Map<String, DeanonymizeRequestDeanonymizersValue> getDeanonymizers() {
+        public Map<String, OperatorQueryParam> getDeanonymizers() {
             return deanonymizers;
         }
 
         /**
          * Set deanonymizers
          **/
-        public void setDeanonymizers(Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers) {
+        public void setDeanonymizers(Map<String, OperatorQueryParam> deanonymizers) {
             this.deanonymizers = deanonymizers;
         }
 
-        public DeanonymizeRequestQueryParam deanonymizers(Map<String, DeanonymizeRequestDeanonymizersValue> deanonymizers) {
+        public DeanonymizeRequestQueryParam deanonymizers(Map<String, OperatorQueryParam> deanonymizers) {
             this.deanonymizers = deanonymizers;
             return this;
         }
 
         public DeanonymizeRequestQueryParam putDeanonymizersItem(String key,
-                DeanonymizeRequestDeanonymizersValue deanonymizersItem) {
+                OperatorQueryParam deanonymizersItem) {
             this.deanonymizers.put(key, deanonymizersItem);
             return this;
         }
