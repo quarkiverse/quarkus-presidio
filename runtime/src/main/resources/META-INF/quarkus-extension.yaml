@@ -5,7 +5,8 @@ metadata:
     - "presidio"
     - "anonymization"
     - "P II"
-  # guide: https://docs.quarkiverse.io/presidio/dev/ # To create and publish this guide, see https://github.com/quarkiverse/quarkiverse/wiki#documenting-your-extension
+  
+  guide: https://docs.quarkiverse.io/quarkus-presidio/dev/
   categories:
     - "security"
     - "AI"
