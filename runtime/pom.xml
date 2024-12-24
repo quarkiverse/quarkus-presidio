@@ -23,19 +23,26 @@
 
     <build>
         <plugins>
-            <!--plugin>
-                <groupId>io.smallrye</groupId>
-                <artifactId>jandex-maven-plugin</artifactId>
-                <version>3.1.8</version>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-index</id>
+                        <id>generate-codestart-jar</id>
+                        <phase>generate-resources</phase>
                         <goals>
-                            <goal>jandex</goal>
+                            <goal>jar</goal>
                         </goals>
+                        <configuration>
+                            <classesDirectory>${project.basedir}/src/main</classesDirectory>
+                            <includes>
+                                <include>codestarts/**</include>
+                            </includes>
+                            <classifier>codestarts</classifier>
+                            <skipIfEmpty>true</skipIfEmpty>
+                        </configuration>
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-extension-maven-plugin</artifactId>
