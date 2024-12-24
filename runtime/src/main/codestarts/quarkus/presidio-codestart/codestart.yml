@@ -1,0 +1,8 @@
+name: presidio-codestart
+ref: presidio
+type: code
+tags: extension-codestart
+metadata:
+  title: Presidio codestart
+  description: This is a tiny app to get started with Quarkus Presidio extension.
+  related-guide-section: https://docs.quarkiverse.io/quarkus-presidio/dev/

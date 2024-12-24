@@ -12,4 +12,9 @@ metadata:
     - "AI"
     - "miscellaneous"
   status: "preview"
+  codestart:
+    name: "presidio"
+    languages:
+      - "java"
+    artifact: "io.quarkiverse.presidio:quarkus-presidio:codestarts:jar:${project.version}"
   icon-url: "https://opensource.microsoft.com/assets/images/svgs/microsoft-logo-no-text.svg"
