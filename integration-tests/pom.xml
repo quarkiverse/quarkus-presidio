@@ -36,11 +36,6 @@
             <version>3.26.3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-devtools-testing</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
