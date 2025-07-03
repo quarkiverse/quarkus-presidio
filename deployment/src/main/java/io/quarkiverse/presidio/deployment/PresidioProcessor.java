@@ -12,7 +12,7 @@ import io.quarkus.deployment.IsNormal;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.DevServicesResultBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
-import io.quarkus.deployment.dev.devservices.GlobalDevServicesConfig;
+import io.quarkus.deployment.dev.devservices.DevServicesConfig;
 import io.quarkus.smallrye.health.deployment.spi.HealthBuildItem;
 
 class PresidioProcessor {
@@ -24,7 +24,7 @@ class PresidioProcessor {
         return new FeatureBuildItem(FEATURE);
     }
 
-    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = GlobalDevServicesConfig.Enabled.class)
+    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = DevServicesConfig.Enabled.class)
     public DevServicesResultBuildItem createAnalyzerContainer(PresidioDevServiceConfig config) {
 
         if (!config.enabledAnalyzer()) {
@@ -48,7 +48,7 @@ class PresidioProcessor {
                 .toBuildItem();
     }
 
-    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = GlobalDevServicesConfig.Enabled.class)
+    @BuildStep(onlyIfNot = IsNormal.class, onlyIf = DevServicesConfig.Enabled.class)
     public DevServicesResultBuildItem createAnonymizerContainer(PresidioDevServiceConfig config) {
 
         if (!config.enabledAnonymizer()) {
