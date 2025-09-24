@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.quarkiverse.presidio</groupId>
         <artifactId>quarkus-presidio-parent</artifactId>
-        <version>999-SNAPSHOT</version>
+        <version>0.5.0</version>
     </parent>
     <artifactId>quarkus-presidio</artifactId>
     <name>Quarkus Presidio - Runtime</name>
