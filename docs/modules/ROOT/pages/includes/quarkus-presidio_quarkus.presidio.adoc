@@ -8,6 +8,10 @@ h|Type
 h|Default
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-analyzer-enabled]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-analyzer-enabled[`quarkus.presidio.devservices.analyzer.enabled`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.analyzer.enabled+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -25,6 +29,10 @@ endif::add-copy-button-to-env-var[]
 |`true`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-anonymizer-enabled]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-anonymizer-enabled[`quarkus.presidio.devservices.anonymizer.enabled`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.anonymizer.enabled+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -42,6 +50,10 @@ endif::add-copy-button-to-env-var[]
 |`true`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-anonymizer-image]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-anonymizer-image[`quarkus.presidio.devservices.anonymizer.image`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.anonymizer.image+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -59,6 +71,10 @@ endif::add-copy-button-to-env-var[]
 |`quay.io/lordofthejars/presidio-anonymizer:latest`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-analyzer-image]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-analyzer-image[`quarkus.presidio.devservices.analyzer.image`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.analyzer.image+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -76,6 +92,10 @@ endif::add-copy-button-to-env-var[]
 |`quay.io/lordofthejars/presidio-analyzer:latest`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-anonymizer-reuse]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-anonymizer-reuse[`quarkus.presidio.devservices.anonymizer.reuse`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.anonymizer.reuse+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -93,6 +113,10 @@ endif::add-copy-button-to-env-var[]
 |`true`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-devservices-analyzer-reuse]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-devservices-analyzer-reuse[`quarkus.presidio.devservices.analyzer.reuse`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.devservices.analyzer.reuse+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
@@ -110,6 +134,10 @@ endif::add-copy-button-to-env-var[]
 |`true`
 
 a|icon:lock[title=Fixed at build time] [[quarkus-presidio_quarkus-presidio-health-enabled]] [.property-path]##link:#quarkus-presidio_quarkus-presidio-health-enabled[`quarkus.presidio.health.enabled`]##
+ifdef::add-copy-button-to-config-props[]
+config_property_copy_button:+++quarkus.presidio.health.enabled+++[]
+endif::add-copy-button-to-config-props[]
+
 
 [.description]
 --
