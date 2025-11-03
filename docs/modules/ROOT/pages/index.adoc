@@ -71,7 +71,7 @@ analyzeRequest.language("en");
 List<RecognizerResultWithAnaysisExplanation> explanations = analyzer.analyzePost(analyzeRequest);
 ----
 
-Then you can iterate over the list to get all the information about the detected entities that could be anonymized.
+Then you can iterate over the list to get all the information about the detected supportedEntities that could be anonymized.
 
 === Anonymizer
 
@@ -110,6 +110,41 @@ anonymizeRequest.analyzerResults(
 AnonymizeResponse anonymizeResponse = this.presidioService.anonymize(anonymizeRequest);
 anonymizeResponse.getText();
 ----
+
+Also, a high level class is provided to simplify the flow of calling analyzer and then anonymizer.
+Same example can be rewritten to:
+
+[source, java]
+----
+@ApplicationScoped
+public class PresidioServicePipeline {
+
+    private PresidioPipeline presidioPipeline;
+
+    static Replace REPLACE = new Replace("ANONYMIZED");
+    static Mask PHONE = new Mask("*", 4, true);
+
+    public PresidioServicePipeline() {
+        this.presidioPipeline = PresidioPipeline.builder() // <1>
+                .withSupportedEntities(
+                        SupportedEntities.PERSON,
+                        SupportedEntities.PHONE_NUMBER)
+                .withSupportedAnonymizers(
+                        Map.of(
+                                SupportedEntities.DEFAULT, REPLACE,
+                                SupportedEntities.PHONE_NUMBER, PHONE))
+                .build();
+    }
+
+    public String analysisAndAnonymize(String text, String language) {
+        return this.presidioPipeline.process(text, language); // <2>
+    }
+
+}
+----
+<1> Automatically injects the Analyzer and Anonymizer classes
+<2> Runs all the Presido flow
+
 
 You can check an example in the `integration-tests` module in the repo of the extension.
 
