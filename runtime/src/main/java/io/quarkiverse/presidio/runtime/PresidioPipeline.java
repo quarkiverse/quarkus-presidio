@@ -61,6 +61,10 @@ public class PresidioPipeline {
                 .getText();
     }
 
+    public static Builder builder(Analyzer analyzer, Anonymizer anonymizer) {
+        return new Builder(analyzer, anonymizer);
+    }
+
     public static Builder builder() {
         return new Builder();
     }
