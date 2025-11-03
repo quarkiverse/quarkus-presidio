@@ -1,4 +1,4 @@
-package org.acme;
+package io.quarkiverse.presidio.it;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import io.quarkiverse.presidio.runtime.model.Replace;
 import io.quarkiverse.presidio.runtime.model.SupportedEntities;
 
 @ApplicationScoped
-public class PresidioService {
+public class PresidioServicePipeline {
 
     private PresidioPipeline presidioPipeline;
 

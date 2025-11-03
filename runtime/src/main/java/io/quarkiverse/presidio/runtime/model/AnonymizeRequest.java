@@ -71,6 +71,10 @@ public class AnonymizeRequest {
         return this;
     }
 
+    public AnonymizeRequest putAnonymizersItem(SupportedEntities key, Operator anonymizersItem) {
+        return this.putAnonymizersItem(key.name(), anonymizersItem);
+    }
+
     /**
      * Array of analyzer detections
      *

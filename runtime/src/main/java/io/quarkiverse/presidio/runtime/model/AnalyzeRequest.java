@@ -1,6 +1,7 @@
 package io.quarkiverse.presidio.runtime.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import jakarta.ws.rs.QueryParam;
@@ -140,6 +141,17 @@ public class AnalyzeRequest {
         }
         this.entities.add(entitiesItem);
         return this;
+    }
+
+    public AnalyzeRequest entities(SupportedEntities... entities) {
+        this.setEntities(Arrays.stream(entities)
+                .map(SupportedEntities::name)
+                .toList());
+        return this;
+    }
+
+    public AnalyzeRequest addEntitiesItem(SupportedEntities supportedEntities) {
+        return this.addEntitiesItem(supportedEntities.name());
     }
 
     /**
